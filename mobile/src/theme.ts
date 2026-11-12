@@ -1,7 +1,20 @@
 export const theme = {
-  colors: { background: '#F3F6F3', surface: '#FFFFFF', text: '#172E28', muted: '#4D625A', primary: '#16634F', accent: '#D7EDB9', border: '#CAD7CF', danger: '#A52626', warning: '#715009' },
+  colors: {
+    background: "#F3F6F3",
+    surface: "#FFFFFF",
+    text: "#172E28",
+    muted: "#4D625A",
+    primary: "#16634F",
+    accent: "#D7EDB9",
+    border: "#CAD7CF",
+    danger: "#A52626",
+    warning: "#715009",
+  },
   spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 },
   font: { small: 14, body: 17, subtitle: 21, title: 30, hero: 38 },
   radius: { sm: 10, md: 18 },
   touch: 48,
+  lineHeight: { body: 26, small: 22 },
+  dimensions: { map: 300, multiline: 120, border: 1 },
+  opacity: { disabled: 0.5 },
 };
