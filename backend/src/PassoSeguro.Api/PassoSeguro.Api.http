@@ -1,6 +1,8 @@
-@PassoSeguro.Api_HostAddress = http://localhost:5239
+@PassoSeguro = http://localhost:5080
 
-GET {{PassoSeguro.Api_HostAddress}}/weatherforecast/
+GET {{PassoSeguro}}/api/v1/health
 Accept: application/json
 
 ###
+# Autentique-se pelo Swagger e use Authorize para testar endpoints protegidos.
+# A senha das contas fict?cias est? no .env local; n?o a versionar neste arquivo.
