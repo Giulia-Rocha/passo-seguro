@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="cc9924a7-08cf-44c5-a8da-f67e19b146b1" name="giuli@GIULIA 2026-11-11 21:40:29" runUser="GIULIA\giuli" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-11T21:40:29.6946118-03:00" queuing="2026-11-11T21:40:29.6946123-03:00" start="2026-11-11T21:40:25.4222624-03:00" finish="2026-11-11T21:40:29.8333326-03:00" />
+  <TestSettings name="default" id="52ae83e0-74ce-4fc5-a36a-8df12dc7d452">
+    <Deployment runDeploymentRoot="giuli_GIULIA_2026-11-11_21_40_29" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a24b4c81-e910-493a-b819-1c7fac426c36" testId="f4fd122f-f1d1-8758-87de-aaecb14bdc95" testName="PassoSeguro.UnitTests.DomainTests.AuthorCanEditOpenOccurrence" computerName="GIULIA" duration="00:00:00.0005421" startTime="2026-11-11T21:40:29.6592590-03:00" endTime="2026-11-11T21:40:29.6595493-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a24b4c81-e910-493a-b819-1c7fac426c36" />
+    <UnitTestResult executionId="ef44fb82-baa1-4ac9-b9fe-a9a913520b21" testId="5d4f8bef-7f0f-d2cf-130a-3f251593b9c2" testName="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 5, age: 0, score: 60, level: &quot;Alta&quot;)" computerName="GIULIA" duration="00:00:00.0007014" startTime="2026-11-11T21:40:29.6363419-03:00" endTime="2026-11-11T21:40:29.6365543-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef44fb82-baa1-4ac9-b9fe-a9a913520b21" />
+    <UnitTestResult executionId="642bad6c-eec2-4f75-9300-5aac89b07e86" testId="3588c343-af15-d824-5e79-d57aa09c0b60" testName="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 3, age: 0, score: 36, level: &quot;Média&quot;)" computerName="GIULIA" duration="00:00:00.0035104" startTime="2026-11-11T21:40:29.6356665-03:00" endTime="2026-11-11T21:40:29.6358632-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="642bad6c-eec2-4f75-9300-5aac89b07e86" />
+    <UnitTestResult executionId="2dd03f60-f4c5-490d-a4b5-1d2d4b69e78f" testId="4a68c239-cc2f-2e13-6597-b1ab78751ae5" testName="PassoSeguro.UnitTests.DomainTests.PriorityCapsAt100" computerName="GIULIA" duration="00:00:00.0040990" startTime="2026-11-11T21:40:29.6639750-03:00" endTime="2026-11-11T21:40:29.6641069-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2dd03f60-f4c5-490d-a4b5-1d2d4b69e78f" />
+    <UnitTestResult executionId="6582c5e1-6332-478a-baac-c089ce67a8c3" testId="c31881c5-a5ef-ffd7-a708-5b261f2a455c" testName="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: 91, lon: 0)" computerName="GIULIA" duration="00:00:00.0006151" startTime="2026-11-11T21:40:29.6626648-03:00" endTime="2026-11-11T21:40:29.6628016-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6582c5e1-6332-478a-baac-c089ce67a8c3" />
+    <UnitTestResult executionId="e712344e-0234-4541-9e2c-d9ff462cc56d" testId="37f730eb-34fb-1931-0572-4a3bfe05acf7" testName="PassoSeguro.UnitTests.DomainTests.AnotherCitizenCannotEdit" computerName="GIULIA" duration="00:00:00.0006755" startTime="2026-11-11T21:40:29.6387362-03:00" endTime="2026-11-11T21:40:29.6390443-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e712344e-0234-4541-9e2c-d9ff462cc56d" />
+    <UnitTestResult executionId="04ac4199-b32b-4b39-915d-75156669c122" testId="04698c4e-9cdb-787e-6b7e-221c3e8f52a4" testName="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: 0, lon: 181)" computerName="GIULIA" duration="00:00:00.0000577" startTime="2026-11-11T21:40:29.6630545-03:00" endTime="2026-11-11T21:40:29.6631957-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="04ac4199-b32b-4b39-915d-75156669c122" />
+    <UnitTestResult executionId="0cb57702-726a-42df-aee1-10d4feff0453" testId="127245a3-2361-cf6d-7681-2f21de0d485e" testName="PassoSeguro.UnitTests.DomainTests.RecurrenceCountsOnlyNearbyRecentUnresolvedSameCategory" computerName="GIULIA" duration="00:00:00.0155976" startTime="2026-11-11T21:40:29.6347833-03:00" endTime="2026-11-11T21:40:29.6350106-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0cb57702-726a-42df-aee1-10d4feff0453" />
+    <UnitTestResult executionId="8322c256-a5d0-47e0-82e0-ca9bc2a27022" testId="1bdac0e2-c86f-4f99-76a0-a33974e77b5f" testName="PassoSeguro.UnitTests.DomainTests.CannotResolveWithoutReview" computerName="GIULIA" duration="00:00:00.0005634" startTime="2026-11-11T21:40:29.6602658-03:00" endTime="2026-11-11T21:40:29.6605294-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8322c256-a5d0-47e0-82e0-ca9bc2a27022" />
+    <UnitTestResult executionId="4361c6ab-3f56-4210-8a2b-fcd739197b33" testId="ee9ec84c-2385-96da-94d3-b55054e66073" testName="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: NaN, lon: 0)" computerName="GIULIA" duration="00:00:00.0007515" startTime="2026-11-11T21:40:29.6622760-03:00" endTime="2026-11-11T21:40:29.6624011-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4361c6ab-3f56-4210-8a2b-fcd739197b33" />
+    <UnitTestResult executionId="a43b5bf2-30c1-4971-868a-788529b2c1a0" testId="d2cd9ed5-73d5-0ec6-05c2-f5e81a106eab" testName="PassoSeguro.UnitTests.DomainTests.RejectsInvalidDifficulty(value: 0)" computerName="GIULIA" duration="00:00:00.0004823" startTime="2026-11-11T21:40:29.6304934-03:00" endTime="2026-11-11T21:40:29.6306735-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a43b5bf2-30c1-4971-868a-788529b2c1a0" />
+    <UnitTestResult executionId="cc92111d-011e-4334-b5b0-3e52d7221b94" testId="7066169e-d399-5091-014e-f9b5dc1cbee5" testName="PassoSeguro.UnitTests.DomainTests.RejectsMissingCategory" computerName="GIULIA" duration="00:00:00.0005488" startTime="2026-11-11T21:40:29.6699065-03:00" endTime="2026-11-11T21:40:29.6700216-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc92111d-011e-4334-b5b0-3e52d7221b94" />
+    <UnitTestResult executionId="67c2ee3b-de1a-429b-9ce5-7d9ae0bddbb9" testId="0a4a73b2-f935-4144-0c13-b9d130383d53" testName="PassoSeguro.UnitTests.DomainTests.RejectsInvalidDifficulty(value: 6)" computerName="GIULIA" duration="00:00:00.5345403" startTime="2026-11-11T21:40:29.0500134-03:00" endTime="2026-11-11T21:40:29.6004760-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67c2ee3b-de1a-429b-9ce5-7d9ae0bddbb9" />
+    <UnitTestResult executionId="7a788d7b-203d-4e70-bcec-fe7a62e2cc89" testId="6a22bfb7-c501-6e16-35ee-a35ec8585338" testName="PassoSeguro.UnitTests.DomainTests.ResolvedHasNoQueuePriority" computerName="GIULIA" duration="00:00:00.0004753" startTime="2026-11-11T21:40:29.6693869-03:00" endTime="2026-11-11T21:40:29.6695493-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a788d7b-203d-4e70-bcec-fe7a62e2cc89" />
+    <UnitTestResult executionId="43a9b9ae-4618-4f8c-9516-430ff252c29e" testId="48e693b7-fd62-868e-b73f-5f4000c04904" testName="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 5, age: 30, score: 75, level: &quot;Alta&quot;)" computerName="GIULIA" duration="00:00:00.0000200" startTime="2026-11-11T21:40:29.6374927-03:00" endTime="2026-11-11T21:40:29.6376600-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43a9b9ae-4618-4f8c-9516-430ff252c29e" />
+    <UnitTestResult executionId="a065bc32-cd7b-46ce-9172-affba4e4de9b" testId="e4f09ef3-54c3-8de4-7ad2-20f976ad3b42" testName="PassoSeguro.UnitTests.DomainTests.StatusTransitionsCreateHistoryAndPreventEdits" computerName="GIULIA" duration="00:00:00.0074209" startTime="2026-11-11T21:40:29.6381171-03:00" endTime="2026-11-11T21:40:29.6382836-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a065bc32-cd7b-46ce-9172-affba4e4de9b" />
+    <UnitTestResult executionId="ae5baf1b-1f9f-446e-8fd5-951fde1ed3b6" testId="dd518603-4167-e850-fef0-6c8f51af182d" testName="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 1, age: 0, score: 12, level: &quot;Baixa&quot;)" computerName="GIULIA" duration="00:00:00.0000302" startTime="2026-11-11T21:40:29.6369842-03:00" endTime="2026-11-11T21:40:29.6371689-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae5baf1b-1f9f-446e-8fd5-951fde1ed3b6" />
+    <UnitTestResult executionId="7550f250-6c26-435f-9928-cf2b9ae3aedd" testId="4f7c0f07-315d-6687-9e6f-d4bee5ce90c5" testName="PassoSeguro.UnitTests.DomainTests.HaversineUsesMeters" computerName="GIULIA" duration="00:00:00.0085637" startTime="2026-11-11T21:40:29.6635145-03:00" endTime="2026-11-11T21:40:29.6636328-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7550f250-6c26-435f-9928-cf2b9ae3aedd" />
+    <UnitTestResult executionId="c6ba30ba-c6e9-47d4-8fea-9eedacd497a4" testId="4983a3d4-b94b-40d2-c7ce-395d20661a52" testName="PassoSeguro.UnitTests.DomainTests.RejectsShortDescription" computerName="GIULIA" duration="00:00:00.0007633" startTime="2026-11-11T21:40:29.6611487-03:00" endTime="2026-11-11T21:40:29.6613596-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c6ba30ba-c6e9-47d4-8fea-9eedacd497a4" />
+    <UnitTestResult executionId="4e9f6893-bde6-4aa7-88eb-2f2816ddb5b6" testId="55c7886a-38e5-bc49-1df2-fdaeea16b28a" testName="PassoSeguro.UnitTests.DomainTests.OnlyManagerCanReview" computerName="GIULIA" duration="00:00:00.0005720" startTime="2026-11-11T21:40:29.6617949-03:00" endTime="2026-11-11T21:40:29.6619501-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e9f6893-bde6-4aa7-88eb-2f2816ddb5b6" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 3, age: 0, score: 36, level: &quot;Média&quot;)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="3588c343-af15-d824-5e79-d57aa09c0b60">
+      <Execution id="642bad6c-eec2-4f75-9300-5aac89b07e86" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="ComputesSeverityAndCappedAge" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.HaversineUsesMeters" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="4f7c0f07-315d-6687-9e6f-d4bee5ce90c5">
+      <Execution id="7550f250-6c26-435f-9928-cf2b9ae3aedd" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="HaversineUsesMeters" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.AnotherCitizenCannotEdit" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="37f730eb-34fb-1931-0572-4a3bfe05acf7">
+      <Execution id="e712344e-0234-4541-9e2c-d9ff462cc56d" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="AnotherCitizenCannotEdit" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsMissingCategory" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="7066169e-d399-5091-014e-f9b5dc1cbee5">
+      <Execution id="cc92111d-011e-4334-b5b0-3e52d7221b94" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsMissingCategory" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.StatusTransitionsCreateHistoryAndPreventEdits" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="e4f09ef3-54c3-8de4-7ad2-20f976ad3b42">
+      <Execution id="a065bc32-cd7b-46ce-9172-affba4e4de9b" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="StatusTransitionsCreateHistoryAndPreventEdits" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: 0, lon: 181)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="04698c4e-9cdb-787e-6b7e-221c3e8f52a4">
+      <Execution id="04ac4199-b32b-4b39-915d-75156669c122" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsInvalidCoordinates" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: 91, lon: 0)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="c31881c5-a5ef-ffd7-a708-5b261f2a455c">
+      <Execution id="6582c5e1-6332-478a-baac-c089ce67a8c3" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsInvalidCoordinates" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 1, age: 0, score: 12, level: &quot;Baixa&quot;)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="dd518603-4167-e850-fef0-6c8f51af182d">
+      <Execution id="ae5baf1b-1f9f-446e-8fd5-951fde1ed3b6" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="ComputesSeverityAndCappedAge" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsInvalidDifficulty(value: 0)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="d2cd9ed5-73d5-0ec6-05c2-f5e81a106eab">
+      <Execution id="a43b5bf2-30c1-4971-868a-788529b2c1a0" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsInvalidDifficulty" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.ResolvedHasNoQueuePriority" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="6a22bfb7-c501-6e16-35ee-a35ec8585338">
+      <Execution id="7a788d7b-203d-4e70-bcec-fe7a62e2cc89" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="ResolvedHasNoQueuePriority" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.OnlyManagerCanReview" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="55c7886a-38e5-bc49-1df2-fdaeea16b28a">
+      <Execution id="4e9f6893-bde6-4aa7-88eb-2f2816ddb5b6" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="OnlyManagerCanReview" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsShortDescription" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="4983a3d4-b94b-40d2-c7ce-395d20661a52">
+      <Execution id="c6ba30ba-c6e9-47d4-8fea-9eedacd497a4" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsShortDescription" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.PriorityCapsAt100" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="4a68c239-cc2f-2e13-6597-b1ab78751ae5">
+      <Execution id="2dd03f60-f4c5-490d-a4b5-1d2d4b69e78f" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="PriorityCapsAt100" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 5, age: 30, score: 75, level: &quot;Alta&quot;)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="48e693b7-fd62-868e-b73f-5f4000c04904">
+      <Execution id="43a9b9ae-4618-4f8c-9516-430ff252c29e" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="ComputesSeverityAndCappedAge" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RecurrenceCountsOnlyNearbyRecentUnresolvedSameCategory" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="127245a3-2361-cf6d-7681-2f21de0d485e">
+      <Execution id="0cb57702-726a-42df-aee1-10d4feff0453" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RecurrenceCountsOnlyNearbyRecentUnresolvedSameCategory" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.CannotResolveWithoutReview" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="1bdac0e2-c86f-4f99-76a0-a33974e77b5f">
+      <Execution id="8322c256-a5d0-47e0-82e0-ca9bc2a27022" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="CannotResolveWithoutReview" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsInvalidDifficulty(value: 6)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="0a4a73b2-f935-4144-0c13-b9d130383d53">
+      <Execution id="67c2ee3b-de1a-429b-9ce5-7d9ae0bddbb9" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsInvalidDifficulty" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.RejectsInvalidCoordinates(lat: NaN, lon: 0)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="ee9ec84c-2385-96da-94d3-b55054e66073">
+      <Execution id="4361c6ab-3f56-4210-8a2b-fcd739197b33" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="RejectsInvalidCoordinates" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.ComputesSeverityAndCappedAge(difficulty: 5, age: 0, score: 60, level: &quot;Alta&quot;)" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="5d4f8bef-7f0f-d2cf-130a-3f251593b9c2">
+      <Execution id="ef44fb82-baa1-4ac9-b9fe-a9a913520b21" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="ComputesSeverityAndCappedAge" />
+    </UnitTest>
+    <UnitTest name="PassoSeguro.UnitTests.DomainTests.AuthorCanEditOpenOccurrence" storage="c:\users\giuli\desktop\gs-2026-2\passoseguro\backend\tests\passoseguro.unittests\bin\debug\net10.0\passoseguro.unittests.dll" id="f4fd122f-f1d1-8758-87de-aaecb14bdc95">
+      <Execution id="a24b4c81-e910-493a-b819-1c7fac426c36" />
+      <TestMethod codeBase="C:\Users\giuli\Desktop\GS-2026-2\PassoSeguro\backend\tests\PassoSeguro.UnitTests\bin\Debug\net10.0\PassoSeguro.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="PassoSeguro.UnitTests.DomainTests" name="AuthorCanEditOpenOccurrence" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f4fd122f-f1d1-8758-87de-aaecb14bdc95" executionId="a24b4c81-e910-493a-b819-1c7fac426c36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d4f8bef-7f0f-d2cf-130a-3f251593b9c2" executionId="ef44fb82-baa1-4ac9-b9fe-a9a913520b21" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3588c343-af15-d824-5e79-d57aa09c0b60" executionId="642bad6c-eec2-4f75-9300-5aac89b07e86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4a68c239-cc2f-2e13-6597-b1ab78751ae5" executionId="2dd03f60-f4c5-490d-a4b5-1d2d4b69e78f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c31881c5-a5ef-ffd7-a708-5b261f2a455c" executionId="6582c5e1-6332-478a-baac-c089ce67a8c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="37f730eb-34fb-1931-0572-4a3bfe05acf7" executionId="e712344e-0234-4541-9e2c-d9ff462cc56d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04698c4e-9cdb-787e-6b7e-221c3e8f52a4" executionId="04ac4199-b32b-4b39-915d-75156669c122" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="127245a3-2361-cf6d-7681-2f21de0d485e" executionId="0cb57702-726a-42df-aee1-10d4feff0453" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1bdac0e2-c86f-4f99-76a0-a33974e77b5f" executionId="8322c256-a5d0-47e0-82e0-ca9bc2a27022" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ee9ec84c-2385-96da-94d3-b55054e66073" executionId="4361c6ab-3f56-4210-8a2b-fcd739197b33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2cd9ed5-73d5-0ec6-05c2-f5e81a106eab" executionId="a43b5bf2-30c1-4971-868a-788529b2c1a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7066169e-d399-5091-014e-f9b5dc1cbee5" executionId="cc92111d-011e-4334-b5b0-3e52d7221b94" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a4a73b2-f935-4144-0c13-b9d130383d53" executionId="67c2ee3b-de1a-429b-9ce5-7d9ae0bddbb9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a22bfb7-c501-6e16-35ee-a35ec8585338" executionId="7a788d7b-203d-4e70-bcec-fe7a62e2cc89" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48e693b7-fd62-868e-b73f-5f4000c04904" executionId="43a9b9ae-4618-4f8c-9516-430ff252c29e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4f09ef3-54c3-8de4-7ad2-20f976ad3b42" executionId="a065bc32-cd7b-46ce-9172-affba4e4de9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dd518603-4167-e850-fef0-6c8f51af182d" executionId="ae5baf1b-1f9f-446e-8fd5-951fde1ed3b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f7c0f07-315d-6687-9e6f-d4bee5ce90c5" executionId="7550f250-6c26-435f-9928-cf2b9ae3aedd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4983a3d4-b94b-40d2-c7ce-395d20661a52" executionId="c6ba30ba-c6e9-47d4-8fea-9eedacd497a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55c7886a-38e5-bc49-1df2-fdaeea16b28a" executionId="4e9f6893-bde6-4aa7-88eb-2f2816ddb5b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="20" executed="20" passed="20" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.95]   Discovering: PassoSeguro.UnitTests&#xD;
+[xUnit.net 00:00:01.12]   Discovered:  PassoSeguro.UnitTests&#xD;
+[xUnit.net 00:00:01.21]   Starting:    PassoSeguro.UnitTests&#xD;
+[xUnit.net 00:00:01.91]   Finished:    PassoSeguro.UnitTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

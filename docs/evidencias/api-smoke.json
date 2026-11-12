@@ -1,0 +1,11 @@
+{
+  "health": 200,
+  "create": 201,
+  "idempotency": "same identifier",
+  "persistence_after_database_and_api_restart": true,
+  "updated_difficulty": 4,
+  "indicators_total_during_test": 16,
+  "delete": 204,
+  "data": "fictitious",
+  "timestamp_utc": "2026-11-12T00:42:25Z"
+}
