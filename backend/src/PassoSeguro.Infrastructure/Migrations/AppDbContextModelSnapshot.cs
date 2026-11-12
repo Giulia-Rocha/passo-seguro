@@ -187,7 +187,6 @@ namespace PassoSeguro.Infrastructure.Migrations
             modelBuilder.Entity("PassoSeguro.Domain.StatusEntry", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("ActorId")
