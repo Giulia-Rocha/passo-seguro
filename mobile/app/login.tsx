@@ -1,0 +1,10 @@
+import { useState } from 'react';
+import { Text } from 'react-native';
+import { request,setSession } from '../src/api';
+import { Session } from '../src/types';
+import { Body,Button,Card,Field,Screen,styles } from '../src/ui';
+export default function Login() {
+  const [register,setRegister]=useState(false); const [name,setName]=useState(''); const [email,setEmail]=useState(''); const [password,setPassword]=useState(''); const [error,setError]=useState(''); const [busy,setBusy]=useState(false);
+  async function submit() { setError(''); if(!email.includes('@')||password.length<8||(register&&name.trim().length<2)) { setError('Informe um e-mail válido, senha com ao menos 8 caracteres e nome no cadastro.'); return; } setBusy(true); try { await setSession(await request<Session>(`/auth/${register?'register':'login'}`,{method:'POST',body:JSON.stringify({name,email,password})})); } catch(e) { setError((e as Error).message); } finally { setBusy(false); } }
+  return <Screen title="Passo Seguro"><Text style={styles.subtitle}>Sua experiência ajuda a tornar a cidade mais acessível.</Text><Body>Registre obstáculos, acompanhe ocorrências e conheça as dificuldades de circulação em Bela Vista.</Body><Card><Text style={styles.subtitle}>{register?'Criar conta':'Entrar'}</Text>{register&&<Field label="Nome fictício" value={name} onChangeText={setName} autoComplete="name"/>}<Field label="E-mail fictício" value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" autoComplete="email"/><Field label="Senha" value={password} onChangeText={setPassword} secureTextEntry autoComplete={register?'new-password':'current-password'}/>{!!error&&<Text accessibilityRole="alert" style={styles.error}>{error}</Text>}<Button title={busy?'Aguarde…':register?'Cadastrar':'Entrar'} onPress={submit} disabled={busy}/><Button title={register?'Já tenho conta':'Criar conta fictícia'} secondary onPress={()=>setRegister(!register)}/></Card><Text style={styles.muted}>Protótipo acadêmico. Use apenas informações fictícias. As prioridades não representam decisões oficiais de órgãos públicos.</Text></Screen>;
+}
