@@ -23,6 +23,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         b.Entity<Occurrence>().Property(x=>x.Description).HasMaxLength(2000);
         b.Entity<Occurrence>().HasIndex(x=>new { x.AuthorId, x.RequestKey }).IsUnique();
         b.Entity<Occurrence>().HasIndex(x=>new { x.CategoryId, x.Status, x.CreatedAt });
+        b.Entity<Occurrence>().HasIndex(x=>new { x.Status, x.CreatedAt });
         b.Entity<Occurrence>().Property(x=>x.Version).IsRowVersion();
         b.Entity<RefreshSession>().Property(x=>x.Version).IsRowVersion();
         b.Entity<RefreshSession>().HasIndex(x=>x.TokenHash).IsUnique();
