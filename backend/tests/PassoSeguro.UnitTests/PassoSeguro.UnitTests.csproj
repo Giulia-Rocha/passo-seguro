@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PassoSeguro.Domain\PassoSeguro.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
