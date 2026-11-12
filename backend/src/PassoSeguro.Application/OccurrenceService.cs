@@ -54,21 +54,21 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
     {
         var items = await Filter(filter, actor, ct);
         static List<CountResponse> Group(IEnumerable<string> values) => values.GroupBy(x => x).Select(x => new CountResponse(x.Key, x.Count())).OrderByDescending(x => x.Count).ToList();
-        return new(items.Count, Group(items.Select(x=>x.Category)), Group(items.Select(x=>x.Status.ToString())),
-            Group(items.Select(x=>x.Priority.Level)), items.GroupBy(x=>x.CreatedAt.UtcDateTime.ToString("yyyy-MM-dd"))
-                .OrderBy(x=>x.Key).Select(x=>new CountResponse(x.Key,x.Count())).ToList(),
-            items.GroupBy(x=>new { Lat = Math.Floor(x.Latitude / .0018), Lon = Math.Floor(x.Longitude / .00196) })
-                .Select(x=>new ConcentrationResponse((x.Key.Lat+.5)*.0018,(x.Key.Lon+.5)*.00196,x.Count())).ToList());
+        return new(items.Count, Group(items.Select(x => x.Category)), Group(items.Select(x => x.Status.ToString())),
+            Group(items.Select(x => x.Priority.Level)), items.GroupBy(x => x.CreatedAt.UtcDateTime.ToString("yyyy-MM-dd"))
+                .OrderBy(x => x.Key).Select(x => new CountResponse(x.Key, x.Count())).ToList(),
+            items.GroupBy(x => new { Lat = Math.Floor(x.Latitude / .0018), Lon = Math.Floor(x.Longitude / .00196) })
+                .Select(x => new ConcentrationResponse((x.Key.Lat + .5) * .0018, (x.Key.Lon + .5) * .00196, x.Count())).ToList());
     }
     private async Task<List<OccurrenceResponse>> Filter(OccurrenceFilter filter, Guid actor, CancellationToken ct)
     {
         if (filter.From > filter.To) throw new RuleException("O início do período deve preceder o fim.");
         var all = await store.List(ct);
-        var values = all.Where(x=>(!filter.CategoryId.HasValue || x.CategoryId == filter.CategoryId) &&
+        var values = all.Where(x => (!filter.CategoryId.HasValue || x.CategoryId == filter.CategoryId) &&
             (!filter.Status.HasValue || x.Status == filter.Status) && (!filter.Difficulty.HasValue || x.Difficulty == filter.Difficulty) &&
             (!filter.From.HasValue || x.CreatedAt >= filter.From) && (!filter.To.HasValue || x.CreatedAt <= filter.To) && (!filter.Mine || x.AuthorId == actor))
-            .Select(x=>Map(x,all)).Where(x=>string.IsNullOrEmpty(filter.Priority) || x.Priority.Level == filter.Priority);
-        return (filter.Sort == "priority" ? values.OrderByDescending(x=>x.Priority.Score).ThenBy(x=>x.CreatedAt) : values.OrderByDescending(x=>x.CreatedAt)).ToList();
+            .Select(x => Map(x, all)).Where(x => string.IsNullOrEmpty(filter.Priority) || x.Priority.Level == filter.Priority);
+        return (filter.Sort == "priority" ? values.OrderByDescending(x => x.Priority.Score).ThenBy(x => x.CreatedAt) : values.OrderByDescending(x => x.CreatedAt)).ToList();
     }
     private async Task Validate(OccurrenceRequest request, CancellationToken ct)
     {
@@ -78,5 +78,5 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
     private OccurrenceResponse Map(Occurrence value, List<Occurrence> all) => new(value.Id, value.AuthorId, value.CategoryId,
         value.Category?.Name ?? "", value.Description, value.Difficulty, value.Latitude, value.Longitude, value.CreatedAt, value.Status,
         PriorityCalculator.Calculate(value, all, clock.GetUtcNow()), value.Photo != null,
-        value.History.OrderBy(x=>x.CreatedAt).Select(x=>new HistoryResponse(x.Status,x.CreatedAt)).ToList());
+        value.History.OrderBy(x => x.CreatedAt).Select(x => new HistoryResponse(x.Status, x.CreatedAt)).ToList());
 }

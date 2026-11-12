@@ -10,8 +10,8 @@ public sealed record RefreshRequest([Required] string RefreshToken);
 public sealed record UserResponse(Guid Id, string Name, string Email, string Role);
 public sealed record AuthResponse(string AccessToken, string RefreshToken, UserResponse User);
 public sealed record OccurrenceRequest([Range(1, int.MaxValue)] int CategoryId,
-    [Required, StringLength(2000, MinimumLength = 10)] string Description, [Range(1,5)] int Difficulty,
-    [Range(-90,90)] double Latitude, [Range(-180,180)] double Longitude);
+    [Required, StringLength(2000, MinimumLength = 10)] string Description, [Range(1, 5)] int Difficulty,
+    [Range(-90, 90)] double Latitude, [Range(-180, 180)] double Longitude);
 public sealed record StatusRequest(OccurrenceStatus Status);
 public sealed record CategoryResponse(int Id, string Name);
 public sealed record HistoryResponse(OccurrenceStatus Status, DateTimeOffset CreatedAt);
@@ -27,13 +27,13 @@ public sealed class OccurrenceFilter
 {
     public int? CategoryId { get; set; }
     public OccurrenceStatus? Status { get; set; }
-    [Range(1,5)] public int? Difficulty { get; set; }
+    [Range(1, 5)] public int? Difficulty { get; set; }
     public string? Priority { get; set; }
     public DateTimeOffset? From { get; set; }
     public DateTimeOffset? To { get; set; }
     public bool Mine { get; set; }
     [Range(1, int.MaxValue)] public int Page { get; set; } = 1;
-    [Range(1,100)] public int PageSize { get; set; } = 30;
+    [Range(1, 100)] public int PageSize { get; set; } = 30;
     [RegularExpression("^(recent|priority)$")] public string Sort { get; set; } = "recent";
 }
 public interface ITerritory

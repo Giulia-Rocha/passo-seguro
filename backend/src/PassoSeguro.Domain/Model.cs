@@ -120,7 +120,7 @@ public static class PriorityCalculator
     public static double Distance(double lat1, double lon1, double lat2, double lon2)
     {
         const double rad = Math.PI / 180;
-        var a = Math.Pow(Math.Sin((lat2-lat1)*rad/2),2) + Math.Cos(lat1*rad)*Math.Cos(lat2*rad)*Math.Pow(Math.Sin((lon2-lon1)*rad/2),2);
+        var a = Math.Pow(Math.Sin((lat2 - lat1) * rad / 2), 2) + Math.Cos(lat1 * rad) * Math.Cos(lat2 * rad) * Math.Pow(Math.Sin((lon2 - lon1) * rad / 2), 2);
         return 6371000 * 2 * Math.Asin(Math.Sqrt(Math.Clamp(a, 0, 1)));
     }
 }
