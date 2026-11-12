@@ -1,0 +1,9 @@
+{
+  "name": "passoseguro",
+  "private": true,
+  "scripts": {
+    "test:all": "npm --prefix mobile test -- --runInBand && dotnet test PassoSeguro.sln",
+    "mobile": "npm --prefix mobile start",
+    "check": "dotnet build PassoSeguro.sln && npm --prefix mobile run typecheck && npm --prefix mobile run lint"
+  }
+}

@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/.expo/
+**/dist/
+**/coverage/
+**/TestResults/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+backend/src/PassoSeguro.Api/Properties/launchSettings.json

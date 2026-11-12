@@ -1,0 +1,6 @@
+@PassoSeguro.Api_HostAddress = http://localhost:5239
+
+GET {{PassoSeguro.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
