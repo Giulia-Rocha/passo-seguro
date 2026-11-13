@@ -67,7 +67,7 @@ No registro, informe opcionalmente um endereço (até 300 caracteres) e use **Lo
 
 O endereço é salvo no PostgreSQL, recuperado na edição/detalhe e preservado nos rascunhos. A migração `AddOccurrenceAddress` adiciona uma coluna opcional, sem excluir registros existentes.
 
-Andamentos possíveis: **Aberta**, **Em análise**, **Resolvida**. O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. Os indicadores de andamento usam uma cor neutra até a equipe definir a cor de cada status; texto, ícones e histórico identificam o estado independentemente da cor.
+Andamentos possíveis: **Aberta** (roxo), **Em análise** (amarelo), **Resolvida** (verde). O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. As cores aparecem nos badges e na linha do tempo; texto e ícones também identificam o estado independentemente da cor.
 
 ### Parar e retomar
 

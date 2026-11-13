@@ -12,7 +12,11 @@ export const theme = {
     onPrimary: "#071922",
     secondaryAccent: "#CCAAFF",
     pressed: "#243855",
-    status: "#BDCADC",
+    status: {
+      Open: { foreground: "#CCAAFF", background: "#261B3D" },
+      InReview: { foreground: "#FFE082", background: "#332B12" },
+      Resolved: { foreground: "#7DE8AA", background: "#123126" },
+    },
   },
   spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 },
   font: { small: 14, body: 17, subtitle: 21, title: 30, hero: 38 },

@@ -1,5 +1,9 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Cores de andamento
+
+Definição do usuário: “em aberto - roxo, em analise - amarelo, resolvida - verde”. Aplicação no tema central, badges e linha do tempo, preservando rótulos e ícones acessíveis.
+
 ## 2026-11-13 — Melhorias de experiência e localização
 
 Solicitação: suavizar transições de páginas/filtros; apresentar filtros em carrosséis horizontais; melhorar acompanhamento e informar status antes de escolher suas cores; adotar tema escuro cyberpunk; adicionar endereço e localização atual ao registro.
