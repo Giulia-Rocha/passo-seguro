@@ -59,6 +59,16 @@ Conecte computador e iPhone à mesma rede e leia o QR code com o iPhone. `localh
 
 O pacote `expo` está fixado em **54.0.0**, conforme solicitado. `expo.install.exclude` preserva esse requisito ao verificar compatibilidade; não atualizar o SDK automaticamente.
 
+### Interface e localização — atualização de 13/11
+
+O app usa tema escuro com detalhes ciano/violeta, transições suaves e respeito à preferência de reduzir movimento do aparelho. Os filtros de Explorar, Minhas e Indicadores, assim como as opções do formulário, ficam em faixas horizontais deslizáveis.
+
+No registro, informe opcionalmente um endereço (até 300 caracteres) e use **Localizar endereço** para posicionar o marcador. Quando houver mais de um resultado, selecione um e confira o mapa. **Usar localização atual** pede permissão e usa o GPS; um endereço anterior é removido para não associá-lo ao novo ponto. A geocodificação utiliza os serviços nativos do aparelho, pode exigir conexão e deve ser validada no iPhone. A restrição do protótipo a Bela Vista continua aplicada pela API.
+
+O endereço é salvo no PostgreSQL, recuperado na edição/detalhe e preservado nos rascunhos. A migração `AddOccurrenceAddress` adiciona uma coluna opcional, sem excluir registros existentes.
+
+Andamentos possíveis: **Aberta**, **Em análise**, **Resolvida**. O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. Os indicadores de andamento usam uma cor neutra até a equipe definir a cor de cada status; texto, ícones e histórico identificam o estado independentemente da cor.
+
 ### Parar e retomar
 
 ```powershell

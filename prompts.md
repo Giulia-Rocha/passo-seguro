@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Melhorias de experiência e localização
+
+Solicitação: suavizar transições de páginas/filtros; apresentar filtros em carrosséis horizontais; melhorar acompanhamento e informar status antes de escolher suas cores; adotar tema escuro cyberpunk; adicionar endereço e localização atual ao registro.
+
+Implementação: tema central escuro, navegação e resultados animados com redução de movimento, filtros compartilhados, badges/linha do tempo neutros, endereço opcional com migração, busca nativa e GPS com mensagens e carregamento. Testes de filtros, concorrência de consultas, localização e persistência. As cores individuais de status ficam pendentes de definição do usuário. A alteração preexistente em mobile/tsconfig.json foi preservada.
+
 ## 2026-11-11 — Planejamento e implementação
 
 Solicitação: desenvolver o Passo Seguro conforme os documentos CitizenTech, Mobile, SOA e C#, em monorepo com Expo SDK 54.0.0, API C#, PostgreSQL 16 em Docker, testes e commits por feature.

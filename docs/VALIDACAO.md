@@ -1,5 +1,14 @@
 # Validação e pendências
 
+## Atualização de 13/11/2026
+
+- Tema escuro com ciano/violeta, transições com redução de movimento e filtros horizontais em todas as consultas e seleções do formulário.
+- Andamento destacado em badges e histórico em linha do tempo. Cores específicas de Aberta, Em análise e Resolvida aguardam definição da equipe; apresentação neutra provisória.
+- Endereço opcional persistido em domínio, DTOs e PostgreSQL, com migração aditiva. A busca por endereço e o GPS usam expo-location do SDK 54, sem novos serviços pagos.
+- **29 testes mobile, 21 testes de domínio e 9 testes de API aprovados**. Os novos cenários cobrem filtros acessíveis, permissão negada, GPS desativado, endereço não encontrado, resposta atrasada de filtros e persistência/edição de endereço.
+- TypeScript e lint verificados após a atualização. Busca de endereço/GPS e animações ainda precisam de validação física no iPhone.
+- As capturas e o relatório visual abaixo são evidências da entrega inicial de 11/11; não representam screenshots do novo tema no aparelho.
+
 ## Execuções reais — 11/11/2026 (São Paulo)
 
 - Backend compilado em .NET 10, com pacotes NuGet restaurados.
