@@ -24,10 +24,18 @@ export const styles = StyleSheet.create({
   subtitle: {
     fontSize: t.font.subtitle,
     fontWeight: "700",
-    color: t.colors.text,
+    color: t.colors.secondaryAccent,
   },
-  text: { fontSize: t.font.body, color: t.colors.text, lineHeight: t.lineHeight.body },
-  muted: { fontSize: t.font.small, color: t.colors.muted, lineHeight: t.lineHeight.small },
+  text: {
+    fontSize: t.font.body,
+    color: t.colors.text,
+    lineHeight: t.lineHeight.body,
+  },
+  muted: {
+    fontSize: t.font.small,
+    color: t.colors.muted,
+    lineHeight: t.lineHeight.small,
+  },
   card: {
     padding: t.spacing.md,
     backgroundColor: t.colors.surface,
@@ -54,7 +62,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontSize: t.font.body,
     fontWeight: "600",
-    color: t.colors.surface,
+    color: t.colors.onPrimary,
   },
   secondary: {
     backgroundColor: t.colors.surface,
@@ -75,6 +83,8 @@ export const styles = StyleSheet.create({
   error: { color: t.colors.danger, fontSize: t.font.body },
   pill: {
     backgroundColor: t.colors.accent,
+    color: t.colors.text,
+    fontSize: t.font.body,
     padding: t.spacing.sm,
     borderRadius: t.radius.sm,
   },
@@ -131,9 +141,13 @@ export function Button({
       accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={[
+      style={({ pressed }) => [
         styles.button,
         secondary && styles.secondary,
+        pressed && {
+          opacity: 0.85,
+          transform: [{ scale: t.motion.pressScale }],
+        },
         disabled && { opacity: t.opacity.disabled },
       ]}
     >
@@ -150,9 +164,14 @@ export function Field({ label, ...props }: TextInputProps & { label: string }) {
       <TextInput
         accessibilityLabel={label}
         placeholderTextColor={t.colors.muted}
+        selectionColor={t.colors.primary}
+        keyboardAppearance="dark"
         style={[
           styles.input,
-          props.multiline && { minHeight: t.dimensions.multiline, textAlignVertical: "top" },
+          props.multiline && {
+            minHeight: t.dimensions.multiline,
+            textAlignVertical: "top",
+          },
         ]}
         {...props}
       />

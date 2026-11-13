@@ -1,13 +1,24 @@
+import { useReducedMotion } from "../../src/motion";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../../src/theme";
 export default function TabsLayout() {
+  const reduced = useReducedMotion();
   return (
     <Tabs
       screenOptions={{
+        animation: reduced ? "none" : "fade",
+        transitionSpec: {
+          animation: "timing",
+          config: { duration: theme.motion.duration },
+        },
+        sceneStyle: { backgroundColor: theme.colors.background },
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.muted,
-        tabBarStyle: { backgroundColor: theme.colors.surface },
+        tabBarStyle: {
+          backgroundColor: theme.colors.surface,
+          borderTopColor: theme.colors.border,
+        },
         headerStyle: { backgroundColor: theme.colors.background },
         headerTintColor: theme.colors.text,
       }}
