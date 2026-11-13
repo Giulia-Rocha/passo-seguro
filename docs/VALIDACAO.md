@@ -2,6 +2,10 @@
 
 ## Atualização de 13/11/2026
 
+- Textos da interface sem “fictício” ou “protótipo acadêmico”. Cadastro com nome, e-mail, senha e confirmação; sessão iniciada com a resposta da API. Testes de tela cobrem cadastro, senha divergente e conta duplicada; teste HTTP verifica que a conta criada é cidadã e consegue fazer login.
+- Limpeza do prefixo de demonstração apenas nos registros de seed, com teste que comprova a preservação das descrições criadas por usuários. Origem dos dados iniciais permanece documentada.
+- Nesta atualização, **33 testes mobile e 14 testes de integração passaram**, incluindo cadastro com início de sessão, login público e preservação das descrições dos usuários. TypeScript e lint aprovados.
+
 - Pendência de `mobile/tsconfig.json` validada com TypeScript e commitada separadamente.
 - Swagger corrigido: criação documenta 201; exclusões, logout e envio de foto documentam 204 sem corpo; health documenta 503 com exemplo de indisponibilidade. Fotos são respostas binárias JPEG/PNG. Exemplos completos de autenticação, indicadores, paginação, histórico, prioridade e erros, incluindo endereço nos exemplos de ocorrência.
 - **12 testes de integração passaram** após a correção do contrato, incluindo uma API de teste com conexão indisponível para verificar o 503 real e sua documentação.

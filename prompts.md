@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Cadastro e textos do aplicativo
+
+Solicitação: retirar termos fictícios do app, habilitar criar conta e remover “protótipo acadêmico” da tela inicial.
+
+Alterações: rótulos e textos neutros nas telas, ação Criar conta com confirmação de senha, normalização de nome/e-mail e bloqueio de envios duplicados. Cadastro conectado ao endpoint público existente; testes validam criação, início de sessão e erros. A limpeza do prefixo dos dados iniciais se restringe a registros identificados como seed; descrições de usuários são preservadas. A origem simulada dos dados continua documentada no README.
+
 ## 2026-11-13 — Pendência mobile e correção do Swagger
 
 Solicitação: “commita uma pendencia que tem em mobile e corrige o swagger”.
