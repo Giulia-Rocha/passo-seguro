@@ -6,6 +6,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
 using PassoSeguro.Application;
 using PassoSeguro.Infrastructure;
@@ -49,6 +50,90 @@ public sealed class ApiFixture : IAsyncLifetime
 }
 public sealed class ApiTests(ApiFixture fixture) : IClassFixture<ApiFixture>
 {
+    [Fact]
+    public async Task OpenApiDocumentsActualSuccessCodesAndNoContentBodies()
+    {
+        using var client = await fixture.Citizen();
+        var document = await client.GetFromJsonAsync<JsonElement>("/swagger/v1/swagger.json");
+        var paths = document.GetProperty("paths");
+        var expected = new[]
+        {
+            ("/api/v1/occurrences", "post", "201"),
+            ("/api/v1/occurrences/{id}", "delete", "204"),
+            ("/api/v1/occurrences/{id}/photo", "put", "204"),
+            ("/api/v1/occurrences/{id}/photo", "delete", "204"),
+            ("/api/v1/auth/logout", "post", "204")
+        };
+        foreach (var (path, method, code) in expected)
+        {
+            var responses = paths.GetProperty(path).GetProperty(method).GetProperty("responses");
+            Assert.True(responses.TryGetProperty(code, out var response), $"Missing {code} for {method} {path}");
+            Assert.False(responses.TryGetProperty("200", out _), $"Incorrect 200 for {method} {path}");
+            if (code == "204") Assert.False(response.TryGetProperty("content", out _));
+        }
+
+        var created = await Create(client, Guid.NewGuid());
+        Assert.Equal(HttpStatusCode.Created, created.StatusCode);
+        Assert.NotNull(created.Headers.Location);
+        var id = (await created.Content.ReadFromJsonAsync<JsonElement>()).GetProperty("id").GetGuid();
+        var deleted = await client.DeleteAsync($"/api/v1/occurrences/{id}");
+        Assert.Equal(HttpStatusCode.NoContent, deleted.StatusCode);
+        Assert.Empty(await deleted.Content.ReadAsByteArrayAsync());
+    }
+
+    [Fact]
+    public async Task OpenApiDocumentsModelsBinaryPhotosErrorsAndAuthentication()
+    {
+        using var client = fixture.Factory.CreateClient();
+        var document = await client.GetFromJsonAsync<JsonElement>("/swagger/v1/swagger.json");
+        var paths = document.GetProperty("paths");
+        foreach (var path in paths.EnumerateObject())
+            foreach (var operation in path.Value.EnumerateObject())
+            {
+                Assert.False(string.IsNullOrWhiteSpace(operation.Value.GetProperty("summary").GetString()));
+                Assert.True(operation.Value.GetProperty("tags").GetArrayLength() > 0);
+            }
+
+        var schemas = document.GetProperty("components").GetProperty("schemas");
+        foreach (var name in new[] { "AuthResponse", "UserResponse", "OccurrenceRequest", "OccurrenceResponse", "OccurrenceResponsePagedResponse", "IndicatorsResponse", "CountResponse", "ConcentrationResponse", "PriorityResult", "HistoryResponse", "OccurrenceStatus", "HealthResponse", "ProblemDetails", "ValidationProblemDetails" })
+            Assert.True(schemas.GetProperty(name).TryGetProperty("example", out _), $"Missing example for {name}");
+        Assert.True(schemas.GetProperty("OccurrenceRequest").GetProperty("example").TryGetProperty("address", out _));
+        var list = paths.GetProperty("/api/v1/occurrences").GetProperty("get");
+        Assert.True(list.GetProperty("security")[0].TryGetProperty("Bearer", out _));
+        Assert.False(list.GetProperty("responses").TryGetProperty("429", out _));
+        var login = paths.GetProperty("/api/v1/auth/login").GetProperty("post");
+        Assert.True(login.GetProperty("responses").TryGetProperty("429", out _));
+        var photo = paths.GetProperty("/api/v1/occurrences/{id}/photo").GetProperty("get").GetProperty("responses").GetProperty("200").GetProperty("content");
+        foreach (var mediaType in new[] { "image/png", "image/jpeg" })
+            Assert.Equal("binary", photo.GetProperty(mediaType).GetProperty("schema").GetProperty("format").GetString());
+        var validation = list.GetProperty("responses").GetProperty("400").GetProperty("content").GetProperty("application/problem+json");
+        Assert.True(validation.GetProperty("example").TryGetProperty("errors", out _));
+        var domain = list.GetProperty("responses").GetProperty("422").GetProperty("content").GetProperty("application/problem+json");
+        Assert.Equal(422, domain.GetProperty("example").GetProperty("status").GetInt32());
+        var territory = paths.GetProperty("/api/v1/territory").GetProperty("get").GetProperty("responses").GetProperty("200").GetProperty("content").GetProperty("application/json");
+        Assert.Equal("FeatureCollection", territory.GetProperty("example").GetProperty("type").GetString());
+    }
+
+    [Fact]
+    public async Task HealthUnavailableMatchesTheDocumented503Response()
+    {
+        using var unavailable = fixture.Factory.WithWebHostBuilder(builder => builder.ConfigureServices(services =>
+        {
+            services.RemoveAll<DbContextOptions<AppDbContext>>();
+            services.AddDbContext<AppDbContext>(options => options.UseNpgsql("Host=127.0.0.1;Port=1;Database=unavailable;Username=unavailable;Password=unused-test-value;Timeout=1;Pooling=false"));
+        }));
+        using var client = unavailable.CreateClient();
+        var response = await client.GetAsync("/api/v1/health");
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+        var body = await response.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Equal("unavailable", body.GetProperty("status").GetString());
+        var document = await client.GetFromJsonAsync<JsonElement>("/swagger/v1/swagger.json");
+        var health = document.GetProperty("paths").GetProperty("/api/v1/health").GetProperty("get");
+        Assert.False(health.TryGetProperty("security", out _));
+        var example = health.GetProperty("responses").GetProperty("503").GetProperty("content").GetProperty("application/json").GetProperty("example");
+        Assert.Equal("unavailable", example.GetProperty("status").GetString());
+        Assert.False(example.TryGetProperty("database", out _));
+    }
     [Fact]
     public async Task AddressPersistsOnCreateEditAndDetail()
     {

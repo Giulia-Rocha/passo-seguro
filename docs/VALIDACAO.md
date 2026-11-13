@@ -2,6 +2,10 @@
 
 ## Atualização de 13/11/2026
 
+- Pendência de `mobile/tsconfig.json` validada com TypeScript e commitada separadamente.
+- Swagger corrigido: criação documenta 201; exclusões, logout e envio de foto documentam 204 sem corpo; health documenta 503 com exemplo de indisponibilidade. Fotos são respostas binárias JPEG/PNG. Exemplos completos de autenticação, indicadores, paginação, histórico, prioridade e erros, incluindo endereço nos exemplos de ocorrência.
+- **12 testes de integração passaram** após a correção do contrato, incluindo uma API de teste com conexão indisponível para verificar o 503 real e sua documentação.
+
 - Tema escuro com ciano/violeta, transições com redução de movimento e filtros horizontais em todas as consultas e seleções do formulário.
 - Andamento destacado em badges e histórico em linha do tempo. Cores definidas pela equipe: Aberta em roxo, Em análise em amarelo e Resolvida em verde, com fundos escuros correspondentes e identificação por texto/ícone.
 - Endereço opcional persistido em domínio, DTOs e PostgreSQL, com migração aditiva. A busca por endereço e o GPS usam expo-location do SDK 54, sem novos serviços pagos.

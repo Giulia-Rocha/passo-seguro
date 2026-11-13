@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Pendência mobile e correção do Swagger
+
+Solicitação: “commita uma pendencia que tem em mobile e corrige o swagger”.
+
+Pendência identificada: simplificação dos includes de `mobile/tsconfig.json`; validada e commitada separadamente. Correção do OpenAPI: status reais 201/204/503, ausência de corpo em 204, fotos binárias, exemplos completos de DTOs/erros e exemplos por operação. Testes de contrato HTTP verificam documentação e comportamento real, incluindo falha isolada de conexão na verificação de saúde. A API Docker foi reconstruída para servir o contrato atualizado.
+
 ## 2026-11-13 — Cores de andamento
 
 Definição do usuário: “em aberto - roxo, em analise - amarelo, resolvida - verde”. Aplicação no tema central, badges e linha do tempo, preservando rótulos e ícones acessíveis.
