@@ -22,6 +22,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         b.Entity<StatusEntry>().HasOne(x => x.Actor).WithMany().HasForeignKey(x => x.ActorId).OnDelete(DeleteBehavior.Restrict);
         b.Entity<StatusEntry>().Property(x => x.Id).ValueGeneratedNever();
         b.Entity<Occurrence>().Property(x => x.Description).HasMaxLength(2000);
+        b.Entity<Occurrence>().Property(x => x.Address).HasMaxLength(300);
         b.Entity<Occurrence>().HasIndex(x => new { x.AuthorId, x.RequestKey }).IsUnique();
         b.Entity<Occurrence>().HasIndex(x => new { x.CategoryId, x.Status, x.CreatedAt });
         b.Entity<Occurrence>().HasIndex(x => new { x.Status, x.CreatedAt });

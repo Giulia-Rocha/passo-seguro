@@ -34,6 +34,7 @@ public sealed class Occurrence
     public int CategoryId { get; private set; }
     public Category Category { get; private set; } = null!;
     public string Description { get; private set; } = "";
+    public string? Address { get; private set; }
     public double Latitude { get; private set; }
     public double Longitude { get; private set; }
     public int Difficulty { get; private set; }
@@ -46,18 +47,25 @@ public sealed class Occurrence
     public OccurrencePhoto? Photo { get; private set; }
     private Occurrence() { }
     public static Occurrence Create(Guid author, int category, string description, int difficulty,
-        double latitude, double longitude, DateTimeOffset now, Guid requestKey, string fingerprint)
+        double latitude, double longitude, DateTimeOffset now, Guid requestKey, string fingerprint, string? address = null)
     {
         if (author == Guid.Empty || requestKey == Guid.Empty) throw new RuleException("Autor e chave de envio são obrigatórios.");
         var value = new Occurrence { AuthorId = author, CreatedAt = now, RequestKey = requestKey, RequestFingerprint = fingerprint };
         value.SetDetails(category, description, difficulty, latitude, longitude);
+        value.SetAddress(address);
         value.History.Add(new StatusEntry(value.Id, author, OccurrenceStatus.Open, now));
         return value;
     }
-    public void Edit(Guid actor, int category, string description, int difficulty, double latitude, double longitude)
+    public void Edit(Guid actor, int category, string description, int difficulty, double latitude, double longitude, string? address = null)
     {
         EnsureEditable(actor);
         SetDetails(category, description, difficulty, latitude, longitude);
+        SetAddress(address);
+    }
+    private void SetAddress(string? address)
+    {
+        if (address?.Length > 300) throw new RuleException("O endereço deve ter no máximo 300 caracteres.");
+        Address = string.IsNullOrWhiteSpace(address) ? null : address.Trim();
     }
     private void SetDetails(int category, string description, int difficulty, double latitude, double longitude)
     {

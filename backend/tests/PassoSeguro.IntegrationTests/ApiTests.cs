@@ -49,6 +49,24 @@ public sealed class ApiFixture : IAsyncLifetime
 }
 public sealed class ApiTests(ApiFixture fixture) : IClassFixture<ApiFixture>
 {
+    [Fact]
+    public async Task AddressPersistsOnCreateEditAndDetail()
+    {
+        using var client = await fixture.Citizen();
+        var input = new OccurrenceRequest(1, "Obstáculo fictício para testar endereço", 3, -23.557, -46.646, "Rua Treze de Maio, 100");
+        var created = await Create(client, Guid.NewGuid(), input);
+        Assert.Equal(HttpStatusCode.Created, created.StatusCode);
+        var body = await created.Content.ReadFromJsonAsync<JsonElement>();
+        var id = body.GetProperty("id").GetGuid();
+        Assert.Equal(input.Address, body.GetProperty("address").GetString());
+        var edited = await client.PutAsJsonAsync($"/api/v1/occurrences/{id}", input with { Address = "Rua Treze de Maio, 102" });
+        Assert.Equal(HttpStatusCode.OK, edited.StatusCode);
+        var detail = await client.GetFromJsonAsync<JsonElement>($"/api/v1/occurrences/{id}");
+        Assert.Equal("Rua Treze de Maio, 102", detail.GetProperty("address").GetString());
+        using var scope = fixture.Factory.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        Assert.Equal("Rua Treze de Maio, 102", (await db.Occurrences.AsNoTracking().SingleAsync(x => x.Id == id)).Address);
+    }
     private static object Input(int difficulty = 3, double latitude = -23.557) => new { categoryId = 1, description = "Obstáculo de teste na passagem", difficulty, latitude, longitude = -46.646 };
     private static async Task<HttpResponseMessage> Create(HttpClient client, Guid key, object? input = null)
     { using var message = new HttpRequestMessage(HttpMethod.Post, "/api/v1/occurrences") { Content = JsonContent.Create(input ?? Input()) }; message.Headers.Add("Idempotency-Key", key.ToString()); return await client.SendAsync(message); }

@@ -80,6 +80,10 @@ namespace PassoSeguro.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Address")
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
+
                     b.Property<Guid>("AuthorId")
                         .HasColumnType("uuid");
 

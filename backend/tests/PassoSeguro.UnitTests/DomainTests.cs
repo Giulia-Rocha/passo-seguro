@@ -3,6 +3,14 @@ namespace PassoSeguro.UnitTests;
 
 public class DomainTests
 {
+    [Fact]
+    public void AddressIsOptionalTrimmedAndLimited()
+    {
+        var value = Occurrence.Create(Guid.NewGuid(), 1, "Obstáculo fictício na passagem", 3, -23.557, -46.646,
+            DateTimeOffset.UtcNow, Guid.NewGuid(), "test", "  Rua Treze de Maio, 100  ");
+        Assert.Equal("Rua Treze de Maio, 100", value.Address);
+        Assert.Throws<RuleException>(() => value.Edit(value.AuthorId, 1, "Obstáculo fictício na passagem", 3, -23.557, -46.646, new string('a', 301)));
+    }
     private static readonly DateTimeOffset Now = new(2026, 11, 11, 12, 0, 0, TimeSpan.Zero);
     private static Occurrence Create(int difficulty = 3, int days = 0, double latitude = -23.557, double longitude = -46.646, int category = 1) =>
         Occurrence.Create(Guid.NewGuid(), category, "Obstáculo fictício na passagem", difficulty, latitude, longitude, Now.AddDays(-days), Guid.NewGuid(), "test");

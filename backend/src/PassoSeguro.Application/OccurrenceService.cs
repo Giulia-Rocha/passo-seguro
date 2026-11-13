@@ -9,7 +9,8 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
 {
     public async Task<OccurrenceResponse> Create(Guid actor, Guid key, OccurrenceRequest request, CancellationToken ct)
     {
-        var fingerprint = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(request))));
+        var fingerprint = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(request,
+            new JsonSerializerOptions { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull }))));
         var previous = await store.FindRequest(actor, key, ct);
         if (previous != null)
         {
@@ -18,7 +19,7 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
         }
         await Validate(request, ct);
         var value = Occurrence.Create(actor, request.CategoryId, request.Description, request.Difficulty,
-            request.Latitude, request.Longitude, clock.GetUtcNow(), key, fingerprint);
+            request.Latitude, request.Longitude, clock.GetUtcNow(), key, fingerprint, request.Address);
         store.Add(value); await store.Save(ct);
         return Map(value, await store.List(ct));
     }
@@ -27,7 +28,7 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
         var value = await Required(id, ct);
         if (value.AuthorId != actor) throw new ForbiddenException();
         await Validate(request, ct);
-        value.Edit(actor, request.CategoryId, request.Description, request.Difficulty, request.Latitude, request.Longitude);
+        value.Edit(actor, request.CategoryId, request.Description, request.Difficulty, request.Latitude, request.Longitude, request.Address);
         await store.Save(ct); return Map(value, await store.List(ct));
     }
     public async Task Delete(Guid id, Guid actor, CancellationToken ct)
@@ -78,5 +79,5 @@ public sealed class OccurrenceService(IOccurrenceStore store, ITerritory territo
     private OccurrenceResponse Map(Occurrence value, List<Occurrence> all) => new(value.Id, value.AuthorId, value.CategoryId,
         value.Category?.Name ?? "", value.Description, value.Difficulty, value.Latitude, value.Longitude, value.CreatedAt, value.Status,
         PriorityCalculator.Calculate(value, all, clock.GetUtcNow()), value.Photo != null,
-        value.History.OrderBy(x => x.CreatedAt).Select(x => new HistoryResponse(x.Status, x.CreatedAt)).ToList());
+        value.History.OrderBy(x => x.CreatedAt).Select(x => new HistoryResponse(x.Status, x.CreatedAt)).ToList(), value.Address);
 }
