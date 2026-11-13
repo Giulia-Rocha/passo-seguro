@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import { ApiError, request } from "./api";
 import { storage } from "./storage";
@@ -10,31 +10,41 @@ export function useResource<T>(path: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cachedAt, setCachedAt] = useState("");
+  const generation = useRef(0);
   const load = useCallback(async () => {
     if (!owner) return;
+    const version = ++generation.current;
+    const current = () => version === generation.current;
+    setData(null);
     setLoading(true);
     setError("");
     setCachedAt("");
     try {
       const value = await request<T>(path);
+      if (!current()) return;
       setData(value);
       await storage.cache(owner, path, value);
     } catch (e) {
+      if (!current()) return;
       setError(e instanceof Error ? e.message : "Falha ao consultar.");
       if (e instanceof ApiError && e.status === 0) {
         const cached = await storage.read<T>(owner, path);
+        if (!current()) return;
         if (cached) {
           setData(cached.value);
           setCachedAt(cached.updated);
         } else setData(null);
       } else setData(null);
     } finally {
-      setLoading(false);
+      if (current()) setLoading(false);
     }
   }, [owner, path]);
   useFocusEffect(
     useCallback(() => {
       void load();
+      return () => {
+        generation.current++;
+      };
     }, [load]),
   );
   return { data, loading, error, cachedAt, reload: load };

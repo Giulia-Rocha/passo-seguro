@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { StatusBadge, StatusProgress } from "../src/OccurrenceStatus";
 import { Alert, Image, Text } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { API_URL, currentSession, request } from "../src/api";
 import { useSession } from "../src/session";
-import { Occurrence, Status, statusLabels } from "../src/types";
+import { Occurrence, Status } from "../src/types";
 import { useResource } from "../src/useResource";
 import { Body, Button, Card, Feedback, Screen, styles } from "../src/ui";
 export default function Detail() {
@@ -59,10 +60,10 @@ export default function Detail() {
         <>
           <Card>
             <Text style={styles.subtitle}>{o.category}</Text>
+            <StatusBadge status={o.status} />
             <Body>{o.description}</Body>
-            <Body>
-              {statusLabels[o.status]} · Dificuldade {o.difficulty}/5
-            </Body>
+            {!!o.address && <Body>Endereço: {o.address}</Body>}
+            <Body>Dificuldade {o.difficulty}/5</Body>
             <Body>{new Date(o.createdAt).toLocaleString("pt-BR")}</Body>
             <Text style={styles.muted}>
               Local: {o.latitude.toFixed(6)}, {o.longitude.toFixed(6)}
@@ -102,13 +103,7 @@ export default function Detail() {
             </Card>
           )}
           <Card>
-            <Text style={styles.subtitle}>Histórico</Text>
-            {o.history.map((h, i) => (
-              <Body key={i}>
-                {statusLabels[h.status]} ·{" "}
-                {new Date(h.createdAt).toLocaleString("pt-BR")}
-              </Body>
-            ))}
+            <StatusProgress occurrence={o} />
           </Card>
           {o.authorId === session?.user.id && o.status === "Open" && (
             <>

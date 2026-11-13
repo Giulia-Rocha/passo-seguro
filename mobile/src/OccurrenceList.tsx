@@ -1,3 +1,6 @@
+import { FilterCarousel } from "./FilterCarousel";
+import { AnimatedContent } from "./motion";
+import { StatusBadge } from "./OccurrenceStatus";
 import { useState } from "react";
 import { Text, View } from "react-native";
 import { router } from "expo-router";
@@ -33,60 +36,57 @@ export function OccurrenceList({ mine = false }: { mine?: boolean }) {
       />
       <Card>
         <Text style={styles.subtitle}>Filtrar consulta</Text>
-        <Text style={styles.muted}>Categoria</Text>
-        <View style={styles.row}>
-          <Button
-            title="Todas"
-            secondary={!category}
-            onPress={() => choose(() => setCategory(undefined))}
-          />
-          {categories.data?.map((c) => (
-            <Button
-              key={c.id}
-              title={c.name}
-              secondary={category !== c.id}
-              onPress={() => choose(() => setCategory(c.id))}
-            />
-          ))}
-        </View>
-        <Text style={styles.muted}>Andamento</Text>
-        <View style={styles.row}>
-          <Button
-            title="Todos"
-            secondary={!!status}
-            onPress={() => choose(() => setStatus(undefined))}
-          />
-          {(Object.keys(statusLabels) as Status[]).map((s) => (
-            <Button
-              key={s}
-              title={statusLabels[s]}
-              secondary={status !== s}
-              onPress={() => choose(() => setStatus(s))}
-            />
-          ))}
-        </View>
-        <Text style={styles.muted}>Prioridade</Text>
-        <View style={styles.row}>
-          {["", "Baixa", "Média", "Alta", "Crítica"].map((p) => (
-            <Button
-              key={p}
-              title={p || "Todas as prioridades"}
-              secondary={priority !== p}
-              onPress={() => choose(() => setPriority(p))}
-            />
-          ))}
-        </View>
-        <Text style={styles.muted}>Dificuldade</Text>
-        <View style={styles.row}>
-          {[undefined, 1, 2, 3, 4, 5].map((d) => (
-            <Button
-              key={d ?? "all"}
-              title={d ? `${d}` : "Todas as dificuldades"}
-              secondary={difficulty !== d}
-              onPress={() => choose(() => setDifficulty(d))}
-            />
-          ))}
-        </View>
+        <FilterCarousel
+          label="Categoria"
+          value={category?.toString() ?? ""}
+          options={[
+            { value: "", label: "Todas" },
+            ...(categories.data ?? []).map((c) => ({
+              value: String(c.id),
+              label: c.name,
+            })),
+          ]}
+          onChange={(value) =>
+            choose(() => setCategory(value ? Number(value) : undefined))
+          }
+        />
+        <FilterCarousel
+          label="Andamento"
+          value={status ?? ""}
+          options={[
+            { value: "", label: "Todos" },
+            ...(Object.keys(statusLabels) as Status[]).map((value) => ({
+              value,
+              label: statusLabels[value],
+            })),
+          ]}
+          onChange={(value) =>
+            choose(() => setStatus(value ? (value as Status) : undefined))
+          }
+        />
+        <FilterCarousel
+          label="Prioridade"
+          value={priority}
+          options={["", "Baixa", "Média", "Alta", "Crítica"].map((value) => ({
+            value,
+            label: value || "Todas",
+          }))}
+          onChange={(value) => choose(() => setPriority(value))}
+        />
+        <FilterCarousel
+          label="Dificuldade"
+          value={difficulty?.toString() ?? ""}
+          options={[
+            { value: "", label: "Todas" },
+            ...[1, 2, 3, 4, 5].map((value) => ({
+              value: String(value),
+              label: `${value} de 5`,
+            })),
+          ]}
+          onChange={(value) =>
+            choose(() => setDifficulty(value ? Number(value) : undefined))
+          }
+        />
         <Button
           title={
             sort === "recent"
@@ -101,7 +101,7 @@ export function OccurrenceList({ mine = false }: { mine?: boolean }) {
       </Card>
       <Feedback {...resource} />
       {resource.data && (
-        <>
+        <AnimatedContent key={query}>
           <Text style={styles.muted}>
             {resource.data.total} resultados · página {page}
           </Text>
@@ -113,6 +113,7 @@ export function OccurrenceList({ mine = false }: { mine?: boolean }) {
           {map && (
             <MapView
               accessibilityLabel="Mapa de ocorrências. A mesma consulta está disponível na lista abaixo."
+              userInterfaceStyle="dark"
               style={styles.map}
               initialRegion={{
                 latitude: -23.557,
@@ -145,10 +146,10 @@ export function OccurrenceList({ mine = false }: { mine?: boolean }) {
           {resource.data.items.map((o) => (
             <Card key={o.id}>
               <Text style={styles.subtitle}>{o.category}</Text>
-              <Text style={styles.pill}>
-                {o.priority.level} · {statusLabels[o.status]}
-              </Text>
+              <Text style={styles.pill}>Prioridade {o.priority.level}</Text>
+              <StatusBadge status={o.status} />
               <Body>{o.description}</Body>
+              {!!o.address && <Text style={styles.muted}>{o.address}</Text>}
               <Text style={styles.muted}>
                 {new Date(o.createdAt).toLocaleDateString("pt-BR")} ·
                 Dificuldade {o.difficulty}/5
@@ -176,7 +177,7 @@ export function OccurrenceList({ mine = false }: { mine?: boolean }) {
               onPress={() => setPage(page + 1)}
             />
           </View>
-        </>
+        </AnimatedContent>
       )}
     </Screen>
   );

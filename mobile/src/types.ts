@@ -20,6 +20,7 @@ export interface Category {
   name: string;
 }
 export interface OccurrenceInput {
+  address?: string | null;
   categoryId: number;
   description: string;
   difficulty: number;

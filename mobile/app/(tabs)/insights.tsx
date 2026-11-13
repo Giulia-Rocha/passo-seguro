@@ -1,8 +1,10 @@
+import { FilterCarousel } from "../../src/FilterCarousel";
+import { AnimatedContent } from "../../src/motion";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { Count, Indicators, statusLabels, Status } from "../../src/types";
 import { useResource } from "../../src/useResource";
-import { Body, Button, Card, Feedback, Screen, styles } from "../../src/ui";
+import { Body, Card, Feedback, Screen, styles } from "../../src/ui";
 function Counts({ title, items }: { title: string; items: Count[] }) {
   return (
     <Card>
@@ -34,19 +36,18 @@ export default function Insights() {
         Registros de Bela Vista. Indicadores demonstrativos, sem caráter
         oficial.
       </Body>
-      <View style={styles.row}>
-        {[7, 30, 90, 365].map((d) => (
-          <Button
-            key={d}
-            title={`${d} dias`}
-            secondary={days !== d}
-            onPress={() => setDays(d)}
-          />
-        ))}
-      </View>
+      <FilterCarousel
+        label="Período"
+        value={String(days)}
+        options={[7, 30, 90, 365].map((d) => ({
+          value: String(d),
+          label: `${d} dias`,
+        }))}
+        onChange={(value) => setDays(Number(value))}
+      />
       <Feedback {...resource} />
       {resource.data && (
-        <>
+        <AnimatedContent key={days}>
           <Card>
             <Text style={styles.stat}>{resource.data.total}</Text>
             <Body>ocorrências no período</Body>
@@ -74,7 +75,7 @@ export default function Insights() {
               <Body>Nenhum registro neste período.</Body>
             )}
           </Card>
-        </>
+        </AnimatedContent>
       )}
     </Screen>
   );
