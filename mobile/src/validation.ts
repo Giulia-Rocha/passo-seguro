@@ -1,5 +1,7 @@
 import { OccurrenceInput } from "./types";
 export function validateOccurrence(input: OccurrenceInput) {
+  if ((input.address?.length ?? 0) > 300)
+    return "O endereço deve ter no máximo 300 caracteres.";
   if (!Number.isInteger(input.categoryId) || input.categoryId < 1)
     return "Escolha uma categoria.";
   if (

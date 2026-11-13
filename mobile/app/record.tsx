@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Alert, Image, Text, View } from "react-native";
+import { Alert, Image, Text } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import MapView, { Marker } from "react-native-maps";
 import * as Crypto from "expo-crypto";
-import * as Location from "expo-location";
+import { Coordinates, currentCoordinates, findAddress } from "../src/location";
+import { FilterCarousel } from "../src/FilterCarousel";
 import * as ImagePicker from "expo-image-picker";
 import { File, Paths } from "expo-file-system";
 import { ApiError, request, uploadPhoto } from "../src/api";
@@ -36,11 +37,15 @@ export default function Record() {
   const [createdId, setCreatedId] = useState<string>();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [locationBusy, setLocationBusy] = useState(false);
+  const [locationMessage, setLocationMessage] = useState("");
+  const [candidates, setCandidates] = useState<Coordinates[]>([]);
+  const locationLock = useRef(false);
   const [ready, setReady] = useState(!id && !draftKey);
   const lock = useRef(false);
   const map = useRef<MapView>(null);
   const categories = useResource<Category[]>("/categories");
-  const locked = !!createdId || pending;
+  const locked = !!createdId || pending || locationBusy;
   function update<K extends keyof OccurrenceInput>(
     field: K,
     value: OccurrenceInput[K],
@@ -97,29 +102,47 @@ export default function Record() {
     };
     await storage.saveDraft(owner, d);
   }
-  async function locate() {
+  function applyCoordinates(point: Coordinates) {
+    setInput((current) => ({ ...current, ...point }));
+    setLatitudeText(String(point.latitude));
+    setLongitudeText(String(point.longitude));
+    map.current?.animateToRegion({
+      ...point,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+    setCandidates([]);
+    setLocationMessage(
+      "Ponto atualizado. Confirme a posição no mapa; a ocorrência deve estar dentro de Bela Vista.",
+    );
+  }
+  async function locate(byAddress = false) {
+    if (locationLock.current || locked || busy) return;
+    locationLock.current = true;
+    setLocationBusy(true);
+    setError("");
+    setLocationMessage("");
+    setCandidates([]);
     try {
-      const permission = await Location.requestForegroundPermissionsAsync();
-      if (!permission.granted) {
-        setError(
-          "Localização não autorizada. Selecione um ponto no mapa ou informe as coordenadas.",
-        );
-        return;
+      if (byAddress) {
+        const results = await findAddress(input.address ?? "");
+        if (results.length === 1) applyCoordinates(results[0]);
+        else {
+          setCandidates(results);
+          setLocationMessage(
+            "Mais de um ponto encontrado. Escolha e confirme no mapa.",
+          );
+        }
+      } else {
+        applyCoordinates(await currentCoordinates());
+        setInput((current) => ({ ...current, address: null }));
       }
-      const position = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Balanced,
-      });
-      update("latitude", position.coords.latitude);
-      update("longitude", position.coords.longitude);
-      map.current?.animateToRegion({
-        ...position.coords,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
-      });
-    } catch {
-      setError(
-        "Não foi possível obter sua localização. Selecione um ponto no mapa.",
-      );
+    } catch (e) {
+      setError((e as Error).message);
+      setLocationMessage((e as Error).message);
+    } finally {
+      locationLock.current = false;
+      setLocationBusy(false);
     }
   }
   async function pick(camera: boolean) {
@@ -162,7 +185,7 @@ export default function Record() {
     }
   }
   async function submit() {
-    if (lock.current) return;
+    if (lock.current || locationLock.current) return;
     const validation = validateOccurrence(input);
     if (validation) {
       setError(validation);
@@ -230,7 +253,7 @@ export default function Record() {
             <Card>
               <Body>
                 O envio anterior precisa ser confirmado. Tente salvar novamente
-                com os mesmos dados para evitar duplica??o.
+                com os mesmos dados para evitar duplicação.
               </Body>
             </Card>
           )}
@@ -243,17 +266,16 @@ export default function Record() {
             </Card>
           )}
           <Text style={styles.subtitle}>Categoria</Text>
-          <View style={styles.row}>
-            {categories.data?.map((c) => (
-              <Button
-                key={c.id}
-                title={c.name}
-                secondary={input.categoryId !== c.id}
-                disabled={busy || locked}
-                onPress={() => update("categoryId", c.id)}
-              />
-            ))}
-          </View>
+          <FilterCarousel
+            label="Categoria"
+            value={String(input.categoryId)}
+            options={(categories.data ?? []).map((c) => ({
+              value: String(c.id),
+              label: c.name,
+            }))}
+            disabled={busy || locked}
+            onChange={(value) => update("categoryId", Number(value))}
+          />
           <Field
             label="Descrição do obstáculo"
             value={input.description}
@@ -264,24 +286,62 @@ export default function Record() {
           />
           <Text style={styles.subtitle}>Dificuldade de circulação</Text>
           <Body>1: pequena dificuldade · 5: impede a passagem</Body>
-          <View style={styles.row}>
-            {[1, 2, 3, 4, 5].map((n) => (
-              <Button
-                key={n}
-                title={`${n}`}
-                secondary={input.difficulty !== n}
-                disabled={busy || locked}
-                onPress={() => update("difficulty", n)}
-              />
-            ))}
-          </View>
+          <FilterCarousel
+            label="Dificuldade"
+            value={String(input.difficulty)}
+            options={[1, 2, 3, 4, 5].map((n) => ({
+              value: String(n),
+              label: `${n} de 5`,
+            }))}
+            disabled={busy || locked}
+            onChange={(value) => update("difficulty", Number(value))}
+          />
           <Text style={styles.subtitle}>Localização</Text>
+          <Field
+            label="Endereço do obstáculo (opcional)"
+            placeholder="Rua e número, em Bela Vista"
+            value={input.address ?? ""}
+            maxLength={300}
+            editable={!busy && !locked}
+            onChangeText={(value) => {
+              update("address", value);
+              setCandidates([]);
+              setLocationMessage("");
+            }}
+          />
+          <Body>
+            O endereço será salvo junto ao ponto. Use “Localizar endereço” e
+            confirme o marcador antes de enviar.
+          </Body>
+          <Button
+            title={locationBusy ? "Localizando…" : "Localizar endereço"}
+            secondary
+            disabled={busy || locked || !input.address?.trim()}
+            onPress={() => locate(true)}
+          />
+          <Button
+            title={
+              locationBusy ? "Obtendo localização…" : "Usar localização atual"
+            }
+            disabled={busy || locked}
+            onPress={() => locate(false)}
+          />
+          {!!locationMessage && <Body>{locationMessage}</Body>}
+          {candidates.map((point, index) => (
+            <Button
+              key={`${point.latitude}-${point.longitude}-${index}`}
+              title={`Selecionar ponto ${index + 1}: ${point.latitude.toFixed(5)}, ${point.longitude.toFixed(5)}`}
+              secondary
+              onPress={() => applyCoordinates(point)}
+            />
+          ))}
           <Body>
             Toque no mapa para marcar o obstáculo ou informe as coordenadas
             abaixo.
           </Body>
           <MapView
             ref={map}
+            userInterfaceStyle="dark"
             style={styles.map}
             accessibilityLabel="Selecione a localização do obstáculo. Também pode usar os campos latitude e longitude."
             initialRegion={{
@@ -301,12 +361,6 @@ export default function Record() {
               }}
             />
           </MapView>
-          <Button
-            title="Usar minha localização"
-            secondary
-            disabled={busy || locked}
-            onPress={locate}
-          />
           <Field
             label="Latitude"
             value={latitudeText}
@@ -374,7 +428,7 @@ export default function Record() {
                   ? "Concluir envio"
                   : "Salvar ocorrência"
             }
-            disabled={busy}
+            disabled={busy || locationBusy}
             onPress={submit}
           />
           {!id && (
