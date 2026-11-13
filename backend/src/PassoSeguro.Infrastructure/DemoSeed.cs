@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PassoSeguro.Domain;
+using System.Text.RegularExpressions;
 namespace PassoSeguro.Infrastructure;
 
 public static class DemoSeed
@@ -14,6 +15,9 @@ public static class DemoSeed
             var samples = await db.Occurrences.Include(x => x.History).Where(x => x.RequestFingerprint == "seed").ToListAsync(ct);
             foreach (var sample in samples)
             {
+                var description = Regex.Replace(sample.Description, @"^Dado fictício de demonstração \d+: ", "");
+                if (description != sample.Description)
+                    db.Entry(sample).Property(x => x.Description).CurrentValue = description;
                 var firstTransition = sample.History.Where(x => x.Status != OccurrenceStatus.Open).Min(x => (DateTimeOffset?)x.CreatedAt);
                 if (firstTransition.HasValue && firstTransition.Value < sample.CreatedAt)
                 {
@@ -38,7 +42,7 @@ public static class DemoSeed
         {
             var lat = -23.5590 + (i % 5) * .0003; var lon = -46.6470 + (i / 5) * .0003;
             if (!territory.Contains(lat, lon)) throw new InvalidOperationException("Seed fora do território.");
-            var occurrence = Occurrence.Create(citizen.Id, i % 5 + 1, $"Dado fictício de demonstração {i + 1}: passagem com dificuldade de acesso.", i % 5 + 1,
+            var occurrence = Occurrence.Create(citizen.Id, i % 5 + 1, "Passagem com dificuldade de acesso.", i % 5 + 1,
                 lat, lon, DateTimeOffset.UtcNow.AddDays(-i - 1), Guid.NewGuid(), "seed");
             if (i % 3 == 0) occurrence.ChangeStatus(true, manager.Id, OccurrenceStatus.InReview, DateTimeOffset.UtcNow.AddHours(-2));
             if (i % 6 == 0) occurrence.ChangeStatus(true, manager.Id, OccurrenceStatus.Resolved, DateTimeOffset.UtcNow.AddHours(-1));

@@ -51,6 +51,45 @@ public sealed class ApiFixture : IAsyncLifetime
 public sealed class ApiTests(ApiFixture fixture) : IClassFixture<ApiFixture>
 {
     [Fact]
+    public async Task SeedCopyRefreshPreservesUserDescriptions()
+    {
+        using var client = await fixture.Citizen();
+        const string legacy = "Dado fictício de demonstração 1: passagem com dificuldade de acesso.";
+        var created = await Create(client, Guid.NewGuid(), new OccurrenceRequest(1, legacy, 3, -23.557, -46.646));
+        created.EnsureSuccessStatusCode();
+        var id = (await created.Content.ReadFromJsonAsync<JsonElement>()).GetProperty("id").GetGuid();
+        using var scope = fixture.Factory.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        var sample = await db.Occurrences.FirstAsync(x => x.RequestFingerprint == "seed");
+        db.Entry(sample).Property(x => x.Description).CurrentValue = legacy;
+        await db.SaveChangesAsync();
+        await DemoSeed.Apply(db, fixture.Password);
+        db.ChangeTracker.Clear();
+        Assert.Equal("passagem com dificuldade de acesso.", (await db.Occurrences.SingleAsync(x => x.Id == sample.Id)).Description);
+        Assert.Equal(legacy, (await db.Occurrences.SingleAsync(x => x.Id == id)).Description);
+        await DemoSeed.Apply(db, fixture.Password);
+        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync($"/api/v1/occurrences/{id}")).StatusCode);
+    }
+    [Fact]
+    public async Task PublicRegistrationCreatesACitizenWhoCanSignIn()
+    {
+        using var client = fixture.Factory.CreateClient();
+        var email = $"signup-{Guid.NewGuid():N}@example.test";
+        var registration = await client.PostAsJsonAsync("/api/v1/auth/register", new { name = "Pessoa de teste", email, password = fixture.Password, role = "Manager" });
+        Assert.Equal(HttpStatusCode.OK, registration.StatusCode);
+        var session = (await registration.Content.ReadFromJsonAsync<AuthResponse>())!;
+        Assert.Equal("Citizen", session.User.Role);
+        Assert.False(string.IsNullOrWhiteSpace(session.AccessToken));
+        var login = await client.PostAsJsonAsync("/api/v1/auth/login", new { email, password = fixture.Password });
+        Assert.Equal(HttpStatusCode.OK, login.StatusCode);
+        var signedIn = (await login.Content.ReadFromJsonAsync<AuthResponse>())!;
+        Assert.Equal(session.User.Id, signedIn.User.Id);
+        using var scope = fixture.Factory.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        var user = await db.Citizens.SingleAsync(x => x.Id == session.User.Id);
+        Assert.NotEqual(fixture.Password, user.PasswordHash);
+    }
+    [Fact]
     public async Task OpenApiDocumentsActualSuccessCodesAndNoContentBodies()
     {
         using var client = await fixture.Citizen();

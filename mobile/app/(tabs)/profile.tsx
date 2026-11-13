@@ -9,11 +9,7 @@ export default function Profile() {
       <Card>
         <Text style={styles.subtitle}>{session?.user.name}</Text>
         <Body>{session?.user.email}</Body>
-        <Body>
-          {session?.user.role === "Manager"
-            ? "Gestor de demonstração"
-            : "Cidadão"}
-        </Body>
+        <Body>{session?.user.role === "Manager" ? "Gestor" : "Cidadão"}</Body>
       </Card>
       <Button
         title="Meus rascunhos"
@@ -22,11 +18,12 @@ export default function Profile() {
       />
       <Card>
         <Body>
-          Passo Seguro é um protótipo acadêmico. Use apenas dados fictícios.
+          Passo Seguro conecta pessoas e informações sobre acessibilidade
+          urbana.
         </Body>
         <Body>
           O mapa usa o limite público de Bela Vista disponibilizado pelo
-          GeoSampa. Ocorrências de demonstração são simuladas.
+          GeoSampa.
         </Body>
         <Body>
           A prioridade é uma estimativa do projeto. Não representa decisão

@@ -241,8 +241,8 @@ export default function Record() {
   return (
     <Screen title={id ? "Editar ocorrência" : "Registrar obstáculo"}>
       <Body>
-        Descreva uma dificuldade de circulação em Bela Vista. Use somente dados
-        fictícios.
+        Descreva a dificuldade de circulação e confirme a localização do
+        obstáculo em Bela Vista.
       </Body>
       {!ready ? (
         <Body>Carregando formulário…</Body>

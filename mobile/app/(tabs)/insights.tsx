@@ -33,8 +33,7 @@ export default function Insights() {
   return (
     <Screen title="Acessibilidade em números">
       <Body>
-        Registros de Bela Vista. Indicadores demonstrativos, sem caráter
-        oficial.
+        Acompanhe a distribuição e a evolução dos registros de Bela Vista.
       </Body>
       <FilterCarousel
         label="Período"

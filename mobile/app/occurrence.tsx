@@ -77,7 +77,7 @@ export default function Detail() {
               {o.priority.agePoints}.
             </Body>
             <Text style={styles.muted}>
-              Estimativa acadêmica, sem caráter oficial.
+              Prioridade calculada pelo sistema, sem caráter oficial.
             </Text>
           </Card>
           {o.hasPhoto && !offline && (

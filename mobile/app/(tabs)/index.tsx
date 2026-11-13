@@ -26,7 +26,7 @@ export default function Home() {
           <Text style={styles.stat}>{resource.data.total}</Text>
           <Body>ocorrências registradas no território</Body>
           <Text style={styles.muted}>
-            Dados de demonstração e contribuições fictícias do protótipo.
+            Acompanhe os obstáculos e as condições de circulação em Bela Vista.
           </Text>
         </Card>
       )}
