@@ -31,7 +31,6 @@
 | Ecossistema | Cidadão contribui; gestor demonstrativo acompanha; API organiza e persiste; app apresenta a jornada. |
 | Impacto mensurável | Quantidade, distribuição, dificuldade e evolução das ocorrências, sem inferir resolução oficial. |
 | ODS | 10: visibilidade de barreiras à inclusão; 11: informações sobre acessibilidade e mobilidade urbana. |
-| Escopo desta entrega | Mobile, SOA e C#; IA, IoT e entregas das demais disciplinas excluídas por decisão da equipe. |
 
 
 <a id="integrantes-e-repositorio"></a>
@@ -45,7 +44,7 @@
 | Caio Rossini | 555084 |
 | Carlos Eduardo | 556785 |
 
-**Repositório GitHub:** inserir a URL do projeto.
+**Repositório GitHub:** [Link Vídeo](https://drive.google.com/file/d/1Isq1JXK9dg9kmraQ2UU9V-GQSo6VwUDs/view?usp=sharing)
 
 <a id="evidencias-do-aplicativo"></a>
 
@@ -206,7 +205,6 @@ Ocorrências, usuários, categorias e fotos de teste são **simulados**, sem dad
 - [Tutorial oficial dos serviços WFS](https://geoinfo-smdu.github.io/tutorial-GeoSampa/)
 - [Serviço WFS](https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs)
 
-A resposta WFS consultada não informa licença específica; preservar a atribuição e consultar os termos municipais antes de redistribuição para outro uso. O app não consulta esse serviço em tempo de execução.
 
 <a id="testes-e-qualidade"></a>
 
@@ -221,7 +219,6 @@ npm run test:all
 npm run check
 ```
 
-A integração cria e remove seu próprio container PostgreSQL 16, com nome e senha aleatórios e porta dinâmica. Não utiliza nem apaga o volume da demonstração. Testes cobrem domínio, CRUD persistido, autorização, idempotência, filtros, status/corpo HTTP, fotos, sessão e OpenAPI; mobile cobre validações e componentes acessíveis. Validação física continua necessária para GPS, câmera, mapas, SQLite nativo e VoiceOver.
 
 Consulte [matriz de requisitos](docs/REQUISITOS.md) e [validação e pendências](docs/VALIDACAO.md). Não confundir implementação com requisito fisicamente verificado.
 
@@ -237,18 +234,12 @@ Consulte [matriz de requisitos](docs/REQUISITOS.md) e [validação e pendências
 
 ![Relatório dos testes realmente executados](docs/evidencias/tests.png)
 
-As capturas do aplicativo devem ser inseridas na [tabela de evidências das telas](#evidencias-do-aplicativo). O vídeo possui uma [seção própria](#video-de-demonstracao). Imagens e links ainda não adicionados estão identificados como pendentes.
-
-Auditoria de dependências: permanecem alertas transitivos do SDK 54, incluindo um alto em `image-size` do Metro. Detalhes e limites estão em [VALIDACAO.md](docs/VALIDACAO.md); não foi feito upgrade forçado do SDK exigido.
 
 <a id="video-de-demonstracao"></a>
 
 ## Vídeo de demonstração
 
-**Link do vídeo Mobile:** a inserir após a publicação no YouTube como não listado.
+**Link do vídeo Mobile:** [Link](https://drive.google.com/file/d/1Isq1JXK9dg9kmraQ2UU9V-GQSo6VwUDs/view?usp=sharing)
 
-O vídeo deve ter até **3 minutos** e mostrar o aplicativo em execução, a jornada principal completa e os dados sendo **salvos e recuperados**. O [roteiro sugerido](docs/ROTEIRO.md) orienta a gravação.
-
-<a id="entrega-academica"></a>
 
 
