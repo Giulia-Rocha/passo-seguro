@@ -2,7 +2,7 @@
 
 Esta matriz relaciona os requisitos das três disciplinas às evidências do projeto. As execuções automatizadas possuem registros locais; a conclusão do vídeo, da revisão de acessibilidade no iPhone e da entrega foi confirmada pela equipe. O detalhamento está em [VALIDACAO.md](VALIDACAO.md).
 
-Os materiais de apresentação estão no README: ficha da solução, integrantes/RMs, repositório, capturas das telas e vídeo. A equipe confirmou a publicação no YouTube como não listado; o README local ainda contém a URL do Google Drive, que deve ser substituída pelo endereço confirmado.
+Os materiais de apresentação estão no README: ficha da solução, integrantes/RMs, repositório, capturas das telas e vídeo. A equipe definiu o Google Drive como plataforma definitiva do vídeo e confirmou que o link está correto. O documento de Mobile especifica YouTube não listado; o uso do Drive é uma alternativa escolhida pela equipe, cuja aceitação cabe ao professor.
 
 ## SOA — 22 subitens
 
@@ -40,7 +40,7 @@ Os materiais de apresentação estão no README: ficha da solução, integrantes
 | Banco (2,0) | PostgreSQL via API; cache e rascunhos SQLite em camada própria | Persistência real verificada nos testes; vídeo com salvamento e recuperação confirmado pela equipe |
 | Acessibilidade (1,5) | Tema, textos legíveis, rótulos, botões acessíveis e lista alternativa ao mapa | Testes de componentes; revisão de VoiceOver, fontes ampliadas e legibilidade no iPhone confirmada pela equipe |
 | Aderência (1,0) | Registro, dificuldade, consulta, mapa, histórico e indicadores de Bela Vista | Fluxos HTTP verificados; jornada principal e conteúdo do vídeo confirmados pela equipe |
-| Documentação (1,0) | Ficha, integrantes/RMs, execução, justificativa do banco, fontes, prints e vídeo no README | Materiais presentes; publicação no YouTube confirmada pela equipe, com URL local ainda a alinhar |
+| Documentação (1,0) | Ficha, integrantes/RMs, execução, justificativa do banco, fontes, prints e vídeo no README | Materiais presentes; vídeo no Drive por decisão da equipe, com aceitação dessa alternativa a confirmar com o professor |
 
 Os testes mobile totalizam **33 casos aprovados** na última execução registrada. Os relatórios visuais iniciais são identificados como evidências históricas em VALIDACAO.md.
 

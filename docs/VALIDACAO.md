@@ -12,7 +12,7 @@
 | Ficha, integrantes/RMs e repositório | Presentes no README | Arquivo verificado |
 | Prints das telas e GIF | Presentes no README e em docs/evidencias | Arquivos verificados |
 | Vídeo de até 3 minutos, jornada completa e salvamento/recuperação | Concluído | Confirmação da equipe |
-| Publicação do vídeo no YouTube como não listado | Concluída conforme relato da equipe; endereço a conciliar com o README local | Confirmação da equipe |
+| Disponibilização do vídeo | Google Drive definido como plataforma definitiva; link do README confirmado | Decisão da equipe |
 | VoiceOver, fontes ampliadas e legibilidade no iPhone | Conferidos | Confirmação da equipe |
 | Acesso dos professores e envio nas três disciplinas | Concluídos | Confirmação da equipe |
 
@@ -20,7 +20,7 @@ As confirmações da equipe registram os itens declarados como concluídos nesta
 
 ### Endereço do vídeo
 
-O README local ainda aponta para um arquivo do Google Drive. A equipe informou que a publicação exigida no YouTube está concluída; falta informar o endereço correspondente para atualizar esse vínculo documental. O link não foi substituído por uma URL presumida.
+O link do Google Drive presente no README foi confirmado pela equipe e deve ser mantido. Não há URL a substituir. Como o documento de Mobile exige YouTube não listado, a disponibilização pelo Drive representa uma alternativa de formato, e sua aceitação depende do professor; não foi registrada confirmação dessa autorização.
 
 ## Evidências e resultados históricos
 

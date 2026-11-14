@@ -1,5 +1,9 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Confirmação da plataforma do vídeo
+
+A equipe definiu que o vídeo permanecerá no Google Drive e confirmou que o link do README está correto. Os documentos de acompanhamento foram ajustados para preservar esse link e registrar a decisão, sem afirmar publicação no YouTube nem aceitação da alternativa pelo professor. A especificação original de Mobile pede YouTube não listado.
+
 ## 2026-11-13 — Consolidação da matriz e das validações
 
 Solicitação: atualizar os documentos de acompanhamento após a equipe confirmar conclusão do vídeo, da revisão de acessibilidade e da entrega aos professores.
