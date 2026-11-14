@@ -1,5 +1,13 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Redução do GIF para o GitHub
+
+Solicitação: reduzir o GIF de demonstração que excedia o limite de tamanho do GitHub.
+
+Arquivo `docs/evidencias/video-gs-2026-2.gif`: reduzido de 558.931.652 para 9.324.244 bytes (98,33%), com 250 × 541 pixels, 4 quadros por segundo e 48 cores. Animação e repetição preservadas; duração de 163,95 para 164,00 segundos. Amostra visual conferida. O caminho usado no README permanece igual.
+
+Após conferir que o arquivo grande foi introduzido apenas no último commit não publicado, esse commit foi corrigido para conter a versão menor. O original permanece no backup local `refs/backups/gif-original-20261114T010048Z`, fora das branches enviadas em um push normal. Nenhum histórico remoto foi reescrito e nenhum push foi executado. FFmpeg portátil utilizado somente na pasta temporária, sem mudar as dependências do projeto.
+
 ## 2026-11-13 — Organização do README e evidências do app
 
 Solicitação: criar uma tabela com descrição da tela e evidência por print antes das instruções de execução; organizar o README em seções e adicionar um sumário com links internos.
