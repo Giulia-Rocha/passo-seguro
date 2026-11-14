@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Organização do README e evidências do app
+
+Solicitação: criar uma tabela com descrição da tela e evidência por print antes das instruções de execução; organizar o README em seções e adicionar um sumário com links internos.
+
+Implementação: sumário com âncoras explícitas, seção de integrantes, tabela de telas e variações da jornada, organização das instruções de execução e seções próprias para interface, evidências técnicas e vídeo. Não foram encontrados prints do app no diretório; as células da tabela permanecem identificadas para inserção das imagens reais, sem links quebrados nem evidências inventadas.
+
 ## 2026-11-13 — Cadastro e textos do aplicativo
 
 Solicitação: retirar termos fictícios do app, habilitar criar conta e remover “protótipo acadêmico” da tela inicial.

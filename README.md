@@ -1,5 +1,25 @@
 # Passo Seguro
 
+## Sumário
+
+- [Ficha da CitizenTech](#ficha-da-citizentech)
+- [Integrantes e repositório](#integrantes-e-repositorio)
+- [Evidências das telas do aplicativo](#evidencias-do-aplicativo)
+- [Execução do projeto](#execucao-do-projeto)
+  - [Backend e banco de dados](#backend-e-banco)
+  - [Aplicativo no iPhone](#aplicativo-no-iphone)
+  - [Parar e retomar](#parar-e-retomar)
+- [Funcionalidades e interface](#funcionalidades-e-interface)
+- [Arquitetura e persistência](#arquitetura-e-persistencia)
+- [Regras de negócio e API](#regras-e-api)
+- [Dados e fontes](#dados-e-fontes)
+- [Testes e qualidade](#testes-e-qualidade)
+- [Evidências técnicas](#evidencias-tecnicas)
+- [Vídeo de demonstração](#video-de-demonstracao)
+- [Entrega acadêmica](#entrega-academica)
+
+<a id="ficha-da-citizentech"></a>
+
 ## Ficha da CitizenTech
 
 | Campo | Definição |
@@ -13,11 +33,76 @@
 | ODS | 10: visibilidade de barreiras à inclusão; 11: informações sobre acessibilidade e mobilidade urbana. |
 | Escopo desta entrega | Mobile, SOA e C#; IA, IoT e entregas das demais disciplinas excluídas por decisão da equipe. |
 
-**Integrantes:** preencher nome completo e RM antes da submissão. **GitHub:** inserir URL final. **Vídeo Mobile:** inserir link não listado de até 3 minutos após gravação.
-
 Protótipo acadêmico. Não existe integração oficial com a Prefeitura/CET nem garantia de atendimento. Use somente dados fictícios ou públicos.
 
-## Executar do zero no Windows
+<a id="integrantes-e-repositorio"></a>
+
+## Integrantes e repositório
+
+| Nome completo | RM |
+|---|---|
+| A preencher | A preencher |
+
+**Repositório GitHub:** inserir a URL do projeto.
+
+<a id="evidencias-do-aplicativo"></a>
+
+## Evidências das telas do aplicativo
+
+A tabela reúne as telas e variações da jornada do usuário. As imagens devem ser capturas reais do aplicativo no iPhone.
+
+Os prints ainda não foram adicionados ao repositório. Salve-os em `docs/evidencias/mobile/` e substitua as células pendentes pelas imagens correspondentes. Os nomes de arquivo abaixo são sugestões; podem ser ajustados aos arquivos enviados.
+
+| Descrição | Evidência (print da tela) |
+|---|---|
+| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. | _Adicionar print_ — `login.png` |
+| **Login com erro:** mensagem de credenciais inválidas ou falha ao entrar. | _Adicionar print_ — `login-erro.png` |
+| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | _Adicionar print_ — `criar-conta.png` |
+| **Validação do cadastro:** mensagem para dados inválidos, senhas divergentes ou e-mail já cadastrado. | _Adicionar print_ — `criar-conta-validacao.png` |
+| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | _Adicionar print_ — `inicio.png` |
+| **Criar ocorrência — categoria e descrição:** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | _Adicionar print_ — `criar-ocorrencia.png` |
+| **Criar ocorrência — endereço:** preenchimento e busca do endereço para posicionar o marcador. | _Adicionar print_ — `ocorrencia-endereco.png` |
+| **Criar ocorrência — localização atual:** uso do GPS para selecionar o ponto da ocorrência. | _Adicionar print_ — `ocorrencia-localizacao-atual.png` |
+| **Criar ocorrência — seleção no mapa:** marcador do obstáculo e campos de latitude e longitude. | _Adicionar print_ — `ocorrencia-mapa.png` |
+| **Criar ocorrência — fotografia:** imagem selecionada pela câmera ou galeria e opção de retirar a foto. | _Adicionar print_ — `ocorrencia-foto.png` |
+| **Validação da ocorrência:** mensagem de campo inválido, ponto fora de Bela Vista ou permissão de localização negada. | _Adicionar print_ — `ocorrencia-validacao.png` |
+| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | _Adicionar print_ — `explorar-lista.png` |
+| **Explorar — filtros:** opções horizontais de categoria, andamento, prioridade e dificuldade. | _Adicionar print_ — `explorar-filtros.png` |
+| **Explorar — mapa:** distribuição das ocorrências da página consultada em marcadores. | _Adicionar print_ — `explorar-mapa.png` |
+| **Consulta sem resultados:** estado de lista vazia para os filtros selecionados. | _Adicionar print_ — `consulta-vazia.png` |
+| **Consulta com falha de conexão:** mensagem de erro e ação para tentar novamente. | _Adicionar print_ — `consulta-erro.png` |
+| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | _Adicionar print_ — `minhas-ocorrencias.png` |
+| **Detalhe — aberta:** ocorrência em aberto, identificada em roxo, com informações e prioridade calculada. | _Adicionar print_ — `detalhe-aberta.png` |
+| **Detalhe — em análise:** ocorrência em análise, identificada em amarelo. | _Adicionar print_ — `detalhe-em-analise.png` |
+| **Detalhe — resolvida:** ocorrência resolvida, identificada em verde. | _Adicionar print_ — `detalhe-resolvida.png` |
+| **Detalhe — histórico:** linha do tempo com as alterações de andamento e suas datas. | _Adicionar print_ — `detalhe-historico.png` |
+| **Editar ocorrência:** formulário preenchido para atualização de uma ocorrência aberta do próprio usuário. | _Adicionar print_ — `editar-ocorrencia.png` |
+| **Excluir ocorrência:** confirmação antes de remover o registro. | _Adicionar print_ — `excluir-ocorrencia.png` |
+| **Gestão do andamento:** ações do gestor para iniciar análise, marcar resolução ou retornar a ocorrência para aberta. | _Adicionar print_ — `gestao-andamento.png` |
+| **Indicadores — resumo e filtros:** total de registros e seleção horizontal do período de análise. | _Adicionar print_ — `indicadores-resumo.png` |
+| **Indicadores — distribuição:** categorias, andamentos e prioridades das ocorrências. | _Adicionar print_ — `indicadores-distribuicao.png` |
+| **Indicadores — evolução e concentração:** registros por dia e concentrações regionais. | _Adicionar print_ — `indicadores-evolucao.png` |
+| **Rascunhos:** registros salvos no aparelho, com opções para continuar ou excluir. | _Adicionar print_ — `rascunhos.png` |
+| **Rascunhos vazios:** mensagem exibida quando não há registros locais salvos. | _Adicionar print_ — `rascunhos-vazios.png` |
+| **Consulta offline:** dados recuperados do cache, com indicação da última atualização. | _Adicionar print_ — `consulta-offline.png` |
+| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | _Adicionar print_ — `perfil.png` |
+| **Sair da conta:** confirmação de saída e aviso sobre a limpeza de cache e rascunhos locais. | _Adicionar print_ — `sair-da-conta.png` |
+
+Para exibir um print na segunda coluna, substitua a célula por uma imagem com largura ajustada, por exemplo:
+
+```html
+<img src="docs/evidencias/mobile/login.png" alt="Tela de login do Passo Seguro" width="260">
+```
+
+Se uma tela precisar de mais de uma captura, coloque as imagens na mesma célula, separadas por `<br>`, ou acrescente uma linha com a descrição da variação.
+
+<a id="execucao-do-projeto"></a>
+
+## Execução do projeto
+
+<a id="backend-e-banco"></a>
+
+### Backend e banco de dados no Windows
 
 Pré-requisitos: Docker Desktop com engine Linux ativo, Node **22 LTS**, npm e Expo Go compatível com SDK 54. .NET SDK 10 é necessário para desenvolver/testar o backend fora do container.
 
@@ -44,7 +129,9 @@ docker compose up -d api
 
 O seed não reseta senhas de um banco já inicializado. Alterar `DEMO_PASSWORD` após o primeiro seed não altera contas existentes.
 
-### App no iPhone
+<a id="aplicativo-no-iphone"></a>
+
+### Aplicativo no iPhone
 
 ```powershell
 cd mobile
@@ -59,15 +146,7 @@ Conecte computador e iPhone à mesma rede e leia o QR code com o iPhone. `localh
 
 O pacote `expo` está fixado em **54.0.0**, conforme solicitado. `expo.install.exclude` preserva esse requisito ao verificar compatibilidade; não atualizar o SDK automaticamente.
 
-### Interface e localização — atualização de 13/11
-
-O app usa tema escuro com detalhes ciano/violeta, transições suaves e respeito à preferência de reduzir movimento do aparelho. Os filtros de Explorar, Minhas e Indicadores, assim como as opções do formulário, ficam em faixas horizontais deslizáveis.
-
-No registro, informe opcionalmente um endereço (até 300 caracteres) e use **Localizar endereço** para posicionar o marcador. Quando houver mais de um resultado, selecione um e confira o mapa. **Usar localização atual** pede permissão e usa o GPS; um endereço anterior é removido para não associá-lo ao novo ponto. A geocodificação utiliza os serviços nativos do aparelho, pode exigir conexão e deve ser validada no iPhone. A restrição do protótipo a Bela Vista continua aplicada pela API.
-
-O endereço é salvo no PostgreSQL, recuperado na edição/detalhe e preservado nos rascunhos. A migração `AddOccurrenceAddress` adiciona uma coluna opcional, sem excluir registros existentes.
-
-Andamentos possíveis: **Aberta** (roxo), **Em análise** (amarelo), **Resolvida** (verde). O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. As cores aparecem nos badges e na linha do tempo; texto e ícones também identificam o estado independentemente da cor.
+<a id="parar-e-retomar"></a>
 
 ### Parar e retomar
 
@@ -78,7 +157,21 @@ docker compose up -d
 
 O volume nomeado preserva o banco. Não use remoção de volumes para reiniciar a demonstração. Migrações só são aplicadas pelo comando explícito `--migrate`.
 
-## Arquitetura
+<a id="funcionalidades-e-interface"></a>
+
+## Funcionalidades e interface
+
+O app usa tema escuro com detalhes ciano/violeta, transições suaves e respeito à preferência de reduzir movimento do aparelho. Os filtros de Explorar, Minhas e Indicadores, assim como as opções do formulário, ficam em faixas horizontais deslizáveis.
+
+No registro, informe opcionalmente um endereço (até 300 caracteres) e use **Localizar endereço** para posicionar o marcador. Quando houver mais de um resultado, selecione um e confira o mapa. **Usar localização atual** pede permissão e usa o GPS; um endereço anterior é removido para não associá-lo ao novo ponto. A geocodificação utiliza os serviços nativos do aparelho, pode exigir conexão e deve ser validada no iPhone. A restrição do protótipo a Bela Vista continua aplicada pela API.
+
+O endereço é salvo no PostgreSQL, recuperado na edição/detalhe e preservado nos rascunhos. A migração `AddOccurrenceAddress` adiciona uma coluna opcional, sem excluir registros existentes.
+
+Andamentos possíveis: **Aberta** (roxo), **Em análise** (amarelo), **Resolvida** (verde). O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. As cores aparecem nos badges e na linha do tempo; texto e ícones também identificam o estado independentemente da cor.
+
+<a id="arquitetura-e-persistencia"></a>
+
+## Arquitetura e persistência
 
 - `Domain`: entidades encapsuladas, invariantes, transições e algoritmo de prioridade.
 - `Application`: DTOs validados, interfaces e casos de uso; não serializa entidades de persistência.
@@ -90,7 +183,9 @@ O PostgreSQL é a fonte de verdade compartilhada. SQLite foi escolhido para recu
 
 O protótipo usa uma base pequena: a seleção inicial é lida por EF Core e agregada em memória nos casos de uso, para calcular recorrência global de modo consistente. Não é uma arquitetura para volume municipal; paginação e filtros fazem parte do contrato, e a evolução para consultas espaciais deve preservar as regras.
 
-## Regras e API
+<a id="regras-e-api"></a>
+
+## Regras de negócio e API
 
 - Cidadãos alteram/excluem apenas suas próprias ocorrências abertas.
 - Gestores mudam `Open → InReview → Resolved` ou `InReview → Open`.
@@ -122,6 +217,8 @@ Criação requer header `Idempotency-Key` com UUID. Repetir a mesma chave e cont
 
 O OpenAPI documenta `201` e o header `Location` na criação; `204` sem corpo nas exclusões, logout e envio da foto; `503` quando a verificação de saúde não consegue acessar o banco. A consulta da foto retorna bytes `image/jpeg` ou `image/png`. Há exemplos fictícios para os DTOs, modelos de erro e respostas consolidadas; o exemplo GeoJSON usa o polígono público versionado.
 
+<a id="dados-e-fontes"></a>
+
 ## Dados e fontes
 
 Ocorrências, usuários, categorias e fotos de teste são **simulados**, sem dados pessoais reais. O limite geográfico é público: camada `geoportal:distrito_municipal`, feição `distrito_municipal.8583447`, GeoSampa/Prefeitura de São Paulo, obtida em 11/11/2026 via WFS, com atualização informada de 27/10/2026. Fonte original informada: GEOGSG; escala 1:5000. O GeoJSON original e seus metadados estão versionados na infraestrutura.
@@ -132,7 +229,9 @@ Ocorrências, usuários, categorias e fotos de teste são **simulados**, sem dad
 
 A resposta WFS consultada não informa licença específica; preservar a atribuição e consultar os termos municipais antes de redistribuição para outro uso. O app não consulta esse serviço em tempo de execução.
 
-## Testes
+<a id="testes-e-qualidade"></a>
+
+## Testes e qualidade
 
 Com Docker ativo, a partir da raiz:
 
@@ -147,7 +246,9 @@ A integração cria e remove seu próprio container PostgreSQL 16, com nome e se
 
 Consulte [matriz de requisitos](docs/REQUISITOS.md) e [validação e pendências](docs/VALIDACAO.md). Não confundir implementação com requisito fisicamente verificado.
 
-### Evidências reais
+<a id="evidencias-tecnicas"></a>
+
+## Evidências técnicas
 
 ![Documentação automática da API em execução](docs/evidencias/swagger.png)
 
@@ -157,9 +258,19 @@ Consulte [matriz de requisitos](docs/REQUISITOS.md) e [validação e pendências
 
 ![Relatório dos testes realmente executados](docs/evidencias/tests.png)
 
-As capturas das telas do app e o vídeo dependem da validação no iPhone; permanecem pendentes e não foram substituídos por mockups.
+As capturas do aplicativo devem ser inseridas na [tabela de evidências das telas](#evidencias-do-aplicativo). O vídeo possui uma [seção própria](#video-de-demonstracao). Imagens e links ainda não adicionados estão identificados como pendentes.
 
 Auditoria de dependências: permanecem alertas transitivos do SDK 54, incluindo um alto em `image-size` do Metro. Detalhes e limites estão em [VALIDACAO.md](docs/VALIDACAO.md); não foi feito upgrade forçado do SDK exigido.
+
+<a id="video-de-demonstracao"></a>
+
+## Vídeo de demonstração
+
+**Link do vídeo Mobile:** a inserir após a publicação no YouTube como não listado.
+
+O vídeo deve ter até **3 minutos** e mostrar o aplicativo em execução, a jornada principal completa e os dados sendo **salvos e recuperados**. O [roteiro sugerido](docs/ROTEIRO.md) orienta a gravação.
+
+<a id="entrega-academica"></a>
 
 ## Entrega acadêmica
 
