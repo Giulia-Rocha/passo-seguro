@@ -13,9 +13,19 @@
 | ODS | 10: visibilidade de barreiras à inclusão; 11: informações sobre acessibilidade e mobilidade urbana. |
 | Escopo desta entrega | Mobile, SOA e C#; IA, IoT e entregas das demais disciplinas excluídas por decisão da equipe. |
 
-**Integrantes:** preencher nome completo e RM antes da submissão. **GitHub:** inserir URL final. **Vídeo Mobile:** inserir link não listado de até 3 minutos após gravação.
+**Integrantes:** 
+| Nome | RM |
+|---|---|
+| Giulia Rocha | 558084 |
+| Gabriel Danius | 555747 |
+| Caio Rossini | 555084 |
+| Carlos Eduardo | 556785 |
 
-Protótipo acadêmico. Não existe integração oficial com a Prefeitura/CET nem garantia de atendimento. Use somente dados fictícios ou públicos.
+
+**GitHub:** inserir URL final. 
+
+**Vídeo Mobile:** inserir link não listado de até 3 minutos após gravação.
+
 
 ## Executar do zero no Windows
 
@@ -161,6 +171,3 @@ As capturas das telas do app e o vídeo dependem da validação no iPhone; perma
 
 Auditoria de dependências: permanecem alertas transitivos do SDK 54, incluindo um alto em `image-size` do Metro. Detalhes e limites estão em [VALIDACAO.md](docs/VALIDACAO.md); não foi feito upgrade forçado do SDK exigido.
 
-## Entrega acadêmica
-
-Prazo dos documentos: **19/11/2026 às 23h55**, inclusive commits. Antes de enviar: completar integrantes/RMs e URL pública, capturar telas no aparelho, gravar vídeo não listado até 3 minutos e confirmar acesso do professor. Roteiro em [docs/ROTEIRO.md](docs/ROTEIRO.md). Submissão é feita pela equipe.
