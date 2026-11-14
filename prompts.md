@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Revisão profissional do README
+
+Solicitação: apresentar as tecnologias no início e remover textos de orientação interna ou sem relevância para a avaliação.
+
+README reorganizado com tecnologias, sumário, ficha, equipe, funcionalidades, evidências, vídeo, execução, arquitetura, API, testes e fontes. Preservados integrantes e arquivos fornecidos; corrigido o link do repositório que apontava para o vídeo e a formatação da linha do GIF. Removidas instruções de preenchimento, repetições e notas operacionais internas. Validados links internos, caminhos das imagens e preservação do vídeo.
+
 ## 2026-11-13 — Redução do GIF para o GitHub
 
 Solicitação: reduzir o GIF de demonstração que excedia o limite de tamanho do GitHub.

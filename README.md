@@ -1,41 +1,59 @@
 # Passo Seguro
 
+Aplicativo de acessibilidade urbana para registrar obstáculos, acompanhar ocorrências e analisar as condições de circulação de pedestres em Bela Vista, São Paulo.
+
+<a id="tecnologias"></a>
+
+## Tecnologias
+
+| Área | Tecnologias |
+|---|---|
+| Aplicativo | React Native 0.81.5, React 19.1, TypeScript 5.9 e Expo SDK 54.0.0 |
+| Navegação e interface | Expo Router, React Native Maps e tema centralizado |
+| Recursos do aparelho | Expo Location, Image Picker e File System |
+| Persistência local | SQLite e SecureStore |
+| Backend | C#, .NET 10 e ASP.NET Core Web API |
+| Persistência do backend | Entity Framework Core 10 e Npgsql |
+| Banco de dados | PostgreSQL 16 |
+| Autenticação | JWT e refresh tokens |
+| Documentação da API | OpenAPI e Swagger UI |
+| Testes | xUnit, Jest e React Native Testing Library |
+| Infraestrutura e integração contínua | Docker Compose e GitHub Actions |
+
 ## Sumário
 
+- [Tecnologias](#tecnologias)
 - [Ficha da CitizenTech](#ficha-da-citizentech)
-- [Integrantes e repositório](#integrantes-e-repositorio)
-- [Evidências das telas do aplicativo](#evidencias-do-aplicativo)
-- [Execução do projeto](#execucao-do-projeto)
+- [Integrantes](#integrantes)
+- [Funcionalidades](#funcionalidades)
+- [Evidências do aplicativo](#evidencias-do-aplicativo)
+- [Vídeo de demonstração](#video-de-demonstracao)
+- [Execução](#execucao)
   - [Backend e banco de dados](#backend-e-banco)
   - [Aplicativo no iPhone](#aplicativo-no-iphone)
-  - [Parar e retomar](#parar-e-retomar)
-- [Funcionalidades e interface](#funcionalidades-e-interface)
 - [Arquitetura e persistência](#arquitetura-e-persistencia)
 - [Regras de negócio e API](#regras-e-api)
-- [Dados e fontes](#dados-e-fontes)
-- [Testes e qualidade](#testes-e-qualidade)
+- [Testes](#testes)
 - [Evidências técnicas](#evidencias-tecnicas)
-- [Vídeo de demonstração](#video-de-demonstracao)
-- [Entrega acadêmica](#entrega-academica)
+- [Dados e fontes](#dados-e-fontes)
 
 <a id="ficha-da-citizentech"></a>
 
 ## Ficha da CitizenTech
 
-| Campo | Definição |
+| Campo | Descrição |
 |---|---|
 | Território | Distrito Bela Vista, São Paulo/SP |
-| Cidadão beneficiado | Pedestres, idosos e pessoas com deficiência ou mobilidade reduzida |
-| Problema | Barreiras na circulação são pouco organizadas e dificultam compreender onde há maior necessidade de intervenção. |
-| Solução | Registrar obstáculos, consultar mapa/lista, acompanhar andamento e visualizar prioridades e indicadores. |
-| Ecossistema | Cidadão contribui; gestor demonstrativo acompanha; API organiza e persiste; app apresenta a jornada. |
-| Impacto mensurável | Quantidade, distribuição, dificuldade e evolução das ocorrências, sem inferir resolução oficial. |
-| ODS | 10: visibilidade de barreiras à inclusão; 11: informações sobre acessibilidade e mobilidade urbana. |
+| Público beneficiado | Pedestres, idosos e pessoas com deficiência ou mobilidade reduzida |
+| Problema | Barreiras na circulação dificultam os deslocamentos e a identificação de áreas que precisam de melhorias. |
+| Solução | Registro colaborativo de obstáculos, acompanhamento do andamento, mapa de ocorrências e indicadores de acessibilidade. |
+| Participantes | Cidadãos registram e consultam ocorrências; gestores acompanham e atualizam seu andamento. |
+| Indicadores de impacto | Quantidade, localização, dificuldade e evolução das ocorrências. |
+| ODS | ODS 10 — Redução das desigualdades; ODS 11 — Cidades e comunidades sustentáveis. |
 
+<a id="integrantes"></a>
 
-<a id="integrantes-e-repositorio"></a>
-
-## Integrantes e repositório
+## Integrantes
 
 | Nome completo | RM |
 |---|---|
@@ -44,53 +62,68 @@
 | Caio Rossini | 555084 |
 | Carlos Eduardo | 556785 |
 
-**Repositório GitHub:** [Link Vídeo](https://drive.google.com/file/d/1Isq1JXK9dg9kmraQ2UU9V-GQSo6VwUDs/view?usp=sharing)
+**Repositório:** [Giulia-Rocha/passo-seguro](https://github.com/Giulia-Rocha/passo-seguro).
+
+<a id="funcionalidades"></a>
+
+## Funcionalidades
+
+- Cadastro e autenticação de cidadãos, com controle de acesso por perfil.
+- Registro de ocorrências com categoria, descrição, dificuldade, endereço, localização e fotografia opcional.
+- Busca por endereço, localização atual por GPS e seleção de ponto no mapa.
+- Consulta em lista e mapa, com filtros, ordenação e paginação.
+- Edição e exclusão de ocorrências abertas pelo próprio autor.
+- Acompanhamento por status e histórico de atualizações.
+- Indicadores por categoria, andamento, prioridade, período e concentração regional.
+- Rascunhos e cache local para consulta sem conexão.
+- Tema escuro, filtros horizontais, identificação textual dos status e suporte à redução de movimento.
+
+O andamento é identificado por **Aberta** (roxo), **Em análise** (amarelo) e **Resolvida** (verde).
 
 <a id="evidencias-do-aplicativo"></a>
 
-## Evidências das telas do aplicativo
+## Evidências do aplicativo
 
-A tabela reúne as telas e variações da jornada do usuário.
-
-
-| Descrição | Evidência (print da tela) |
+| Descrição | Evidência |
 |---|---|
-| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. |<img src="./docs/evidencias/login.PNG" width="250" />|
-| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | <img src="./docs/evidencias/cadastro.PNG" width="250" />|
-| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | <img src="./docs/evidencias/home.PNG" width="250" /> |
-| **Criar ocorrência** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | <img src="./docs/evidencias/registrar-ocorrencia.PNG" width="250" /> |
-| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | <img src="./docs/evidencias/explorar.PNG" width="250" /> |
-| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | <img src="./docs/evidencias/minhas-ocorrencias.PNG" width="250" /> |
-| **Acompanhamento das ocorrências:** lista dos registros criados pela comunidade. | <img src="./docs/evidencias/numeros.PNG" width="250" /> |
-| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | <img src="./docs/evidencias/perfil.PNG" width="250"/> |
+| **Login:** acesso com e-mail e senha. | <img src="./docs/evidencias/login.PNG" alt="Tela de login" width="250" /> |
+| **Criar conta:** formulário com nome, e-mail, senha e confirmação. | <img src="./docs/evidencias/cadastro.PNG" alt="Tela de criação de conta" width="250" /> |
+| **Início:** visão geral das ocorrências e atalhos da jornada. | <img src="./docs/evidencias/home.PNG" alt="Tela inicial" width="250" /> |
+| **Criar ocorrência:** categoria, descrição, dificuldade e localização do obstáculo. | <img src="./docs/evidencias/registrar-ocorrencia.PNG" alt="Formulário de ocorrência" width="250" /> |
+| **Explorar:** consulta das ocorrências, filtros, prioridades e andamento. | <img src="./docs/evidencias/explorar.PNG" alt="Consulta de ocorrências" width="250" /> |
+| **Minhas ocorrências:** registros criados pela conta conectada. | <img src="./docs/evidencias/minhas-ocorrencias.PNG" alt="Ocorrências do usuário" width="250" /> |
+| **Indicadores:** totais e distribuição dos registros de acessibilidade. | <img src="./docs/evidencias/numeros.PNG" alt="Indicadores de acessibilidade" width="250" /> |
+| **Perfil:** identificação da conta, papel de acesso e rascunhos. | <img src="./docs/evidencias/perfil.PNG" alt="Perfil do usuário" width="250" /> |
+| **Demonstração da jornada:** fluxo principal do aplicativo. | <img src="./docs/evidencias/video-gs-2026-2.gif" alt="Demonstração animada da jornada do aplicativo" width="250" /> |
 
-| **GIF de Demonstração:** Demonstração do Fluxo principal do App. | <img src="./docs/evidencias/video-gs-2026-2.gif" width="250"/> |
+<a id="video-de-demonstracao"></a>
 
-Para exibir um print na segunda coluna, substitua a célula por uma imagem com largura ajustada, por exemplo:
+## Vídeo de demonstração
 
-```html
-<img src="docs/evidencias/mobile/login.png" alt="Tela de login do Passo Seguro" width="260">
-```
+[Assistir à demonstração do Passo Seguro](https://drive.google.com/file/d/1Isq1JXK9dg9kmraQ2UU9V-GQSo6VwUDs/view?usp=sharing).
 
-Se uma tela precisar de mais de uma captura, coloque as imagens na mesma célula, separadas por `<br>`, ou acrescente uma linha com a descrição da variação.
+<a id="execucao"></a>
 
-<a id="execucao-do-projeto"></a>
+## Execução
 
-## Execução do projeto
+**Pré-requisitos:** Docker Desktop com engine Linux ativo, Node.js 22 LTS, npm e Expo Go compatível com SDK 54. Para executar os testes do backend, instalar também o .NET SDK 10.
 
 <a id="backend-e-banco"></a>
 
-### Backend e banco de dados no Windows
+### Backend e banco de dados
 
-Pré-requisitos: Docker Desktop com engine Linux ativo, Node **22 LTS**, npm e Expo Go compatível com SDK 54. .NET SDK 10 é necessário para desenvolver/testar o backend fora do container.
-
-Na raiz `PassoSeguro`:
+Na raiz do repositório, execute no PowerShell:
 
 ```powershell
 ./scripts/setup.ps1
 ```
 
-O script cria `.env` com senhas aleatórias locais se não existir, sobe PostgreSQL **16**, compila a API, aplica migrações e seed e inicia a API. Não sobrescreve sua configuração existente. Alternativamente, copie `.env.example` para `.env`, substitua os valores e execute:
+O script configura o ambiente local, inicia o PostgreSQL, compila a API e aplica as migrações e a carga inicial de dados. As configurações ficam no arquivo `.env`, a partir das variáveis descritas em `.env.example`.
+
+<details>
+<summary>Execução manual com Docker Compose</summary>
+
+Copie `.env.example` para `.env`, configure as variáveis e execute:
 
 ```powershell
 docker compose up -d db --wait
@@ -99,13 +132,16 @@ docker compose run --rm api --migrate
 docker compose up -d api
 ```
 
-- Swagger: [http://localhost:5080/swagger](http://localhost:5080/swagger).
-- OpenAPI: [http://localhost:5080/swagger/v1/swagger.json](http://localhost:5080/swagger/v1/swagger.json).
-- Saúde: [http://localhost:5080/api/v1/health](http://localhost:5080/api/v1/health).
-- Banco no host: `127.0.0.1:5436`; entre containers: `db:5432`.
-- Contas: `cidadao@passoseguro.test` e `gestor@passoseguro.test`; senha: valor de `DEMO_PASSWORD` no `.env` local.
+</details>
 
-O seed não reseta senhas de um banco já inicializado. Alterar `DEMO_PASSWORD` após o primeiro seed não altera contas existentes.
+| Recurso | Endereço |
+|---|---|
+| Swagger UI | [http://localhost:5080/swagger](http://localhost:5080/swagger) |
+| OpenAPI | [http://localhost:5080/swagger/v1/swagger.json](http://localhost:5080/swagger/v1/swagger.json) |
+| Saúde da API | [http://localhost:5080/api/v1/health](http://localhost:5080/api/v1/health) |
+| PostgreSQL no computador | `127.0.0.1:5436` |
+
+**Contas de acesso:** `cidadao@passoseguro.test` e `gestor@passoseguro.test`. A senha inicial corresponde ao valor de `DEMO_PASSWORD` utilizado na primeira carga de dados. Também é possível criar uma conta pelo aplicativo.
 
 <a id="aplicativo-no-iphone"></a>
 
@@ -115,131 +151,123 @@ O seed não reseta senhas de um banco já inicializado. Alterar `DEMO_PASSWORD` 
 cd mobile
 npm ci
 Copy-Item .env.example .env
-# Edite EXPO_PUBLIC_API_URL com o IPv4 do computador, por exemplo:
-# EXPO_PUBLIC_API_URL=http://192.168.0.10:5080/api/v1
+```
+
+No arquivo `mobile/.env`, configure o IPv4 do computador na rede local:
+
+```dotenv
+EXPO_PUBLIC_API_URL=http://192.168.0.10:5080/api/v1
+```
+
+Inicie o aplicativo:
+
+```powershell
 npx expo start
 ```
 
-Conecte computador e iPhone à mesma rede e leia o QR code com o iPhone. `localhost` no aparelho aponta para o próprio iPhone; use o IP do computador. Abra `http://IP-DO-PC:5080/api/v1/health` no Safari para verificar a conectividade. Permita acesso à rede local quando solicitado e verifique firewall/rede Wi-Fi sem isolamento de clientes. O túnel do Metro não publica a API automaticamente.
-
-O pacote `expo` está fixado em **54.0.0**, conforme solicitado. `expo.install.exclude` preserva esse requisito ao verificar compatibilidade; não atualizar o SDK automaticamente.
-
-<a id="parar-e-retomar"></a>
-
-### Parar e retomar
-
-```powershell
-docker compose stop
-docker compose up -d
-```
-
-O volume nomeado preserva o banco. Não use remoção de volumes para reiniciar a demonstração. Migrações só são aplicadas pelo comando explícito `--migrate`.
-
-<a id="funcionalidades-e-interface"></a>
-
-## Funcionalidades e interface
-
-O app usa tema escuro com detalhes ciano/violeta, transições suaves e respeito à preferência de reduzir movimento do aparelho. Os filtros de Explorar, Minhas e Indicadores, assim como as opções do formulário, ficam em faixas horizontais deslizáveis.
-
-No registro, informe opcionalmente um endereço (até 300 caracteres) e use **Localizar endereço** para posicionar o marcador. Quando houver mais de um resultado, selecione um e confira o mapa. **Usar localização atual** pede permissão e usa o GPS; um endereço anterior é removido para não associá-lo ao novo ponto. A geocodificação utiliza os serviços nativos do aparelho, pode exigir conexão e deve ser validada no iPhone. A restrição do protótipo a Bela Vista continua aplicada pela API.
-
-O endereço é salvo no PostgreSQL, recuperado na edição/detalhe e preservado nos rascunhos. A migração `AddOccurrenceAddress` adiciona uma coluna opcional, sem excluir registros existentes.
-
-Andamentos possíveis: **Aberta** (roxo), **Em análise** (amarelo), **Resolvida** (verde). O fluxo é Aberta → Em análise → Resolvida, com retorno Em análise → Aberta. As cores aparecem nos badges e na linha do tempo; texto e ícones também identificam o estado independentemente da cor.
+Com o iPhone e o computador conectados à mesma rede, leia o QR code pelo Expo Go. A API deve estar acessível pelo IP configurado, com a porta `5080` liberada para a rede local.
 
 <a id="arquitetura-e-persistencia"></a>
 
 ## Arquitetura e persistência
 
-- `Domain`: entidades encapsuladas, invariantes, transições e algoritmo de prioridade.
-- `Application`: DTOs validados, interfaces e casos de uso; não serializa entidades de persistência.
-- `Infrastructure`: EF Core/Npgsql, chaves estrangeiras, consultas LINQ assíncronas, migrações e seed.
-- `Api`: REST, JWT, DI, autorização, erros e OpenAPI.
-- `mobile`: Expo Router, componentes reutilizáveis, tema central, serviços HTTP, SecureStore e SQLite.
+| Camada | Responsabilidade |
+|---|---|
+| `Domain` | Entidades, invariantes, transições de status e cálculo de prioridade. |
+| `Application` | Casos de uso, interfaces, DTOs e validação de entradas. |
+| `Infrastructure` | EF Core, Npgsql, relacionamentos, migrações e carga inicial. |
+| `Api` | Endpoints REST, autenticação, autorização, tratamento de erros e OpenAPI. |
+| `mobile` | Navegação, componentes, tema, serviços HTTP e persistência local. |
 
-O PostgreSQL é a fonte de verdade compartilhada. SQLite foi escolhido para recuperar consultas recentes e rascunhos sem rede, com acesso isolado em `src/storage.ts`. Credenciais não ficam no SQLite: sessão em SecureStore. O logout remove os registros locais da conta. A foto de uma consulta exige conexão; fotos de rascunho são copiadas para armazenamento persistente do app.
+O **PostgreSQL 16** centraliza os dados compartilhados e mantém a integridade dos relacionamentos. A estrutura é versionada por migrações EF Core, e os dados permanecem no volume Docker após reinícios.
 
-O protótipo usa uma base pequena: a seleção inicial é lida por EF Core e agregada em memória nos casos de uso, para calcular recorrência global de modo consistente. Não é uma arquitetura para volume municipal; paginação e filtros fazem parte do contrato, e a evolução para consultas espaciais deve preservar as regras.
+O **SQLite** armazena rascunhos e consultas recentes, permitindo recuperar informações sem conexão. O acesso local está concentrado em uma camada própria. O **SecureStore** armazena a sessão de autenticação.
 
 <a id="regras-e-api"></a>
 
 ## Regras de negócio e API
 
-- Cidadãos alteram/excluem apenas suas próprias ocorrências abertas.
-- Gestores mudam `Open → InReview → Resolved` ou `InReview → Open`.
-- Mudanças ficam no histórico. Resolvidas permanecem nas consultas, fora da fila de prioridade.
-- Latitude/longitude devem estar dentro do polígono oficial de Bela Vista.
-- Descrição: 10–2000 caracteres; dificuldade: inteiro de 1 a 5; categoria ativa obrigatória.
-- Fotos opcionais JPEG/PNG de até 5 MB; envio separado permite recuperar falha sem perder a ocorrência.
-- Cadastro cria apenas cidadão. Gestor é provisionado pelo seed.
-- JWT: 15 minutos; refresh: 7 dias, armazenado como hash, rotacionado e revogável. Logout revoga refresh; um JWT emitido expira ao fim da validade.
+- Ocorrências devem possuir autor, categoria ativa, localização em Bela Vista, descrição de 10 a 2000 caracteres e dificuldade de 1 a 5.
+- O endereço é opcional, com limite de 300 caracteres. A fotografia pode ser JPEG ou PNG, de até 5 MB.
+- Somente o autor pode editar ou excluir uma ocorrência enquanto estiver aberta.
+- Gestores podem executar as transições **Aberta → Em análise → Resolvida** e **Em análise → Aberta**. Cada alteração gera uma entrada no histórico.
+- A criação utiliza uma chave de idempotência para evitar duplicação ao repetir um envio.
+- A autenticação utiliza JWT e refresh tokens rotacionados e revogáveis.
 
-Prioridade: `dificuldade × 12 + min(semelhantes × 5, 25) + min(dias completos em aberto, 15)`. Semelhantes: mesma categoria, até 200 m, últimos 30 dias, não resolvidas, excluindo a própria. Baixa <35; média <60; alta <80; crítica >=80. Tempo em dias completos de 24h; cálculo em UTC. Resultado inclui a explicação dos pontos.
+### Priorização
 
-| Método | Rota base `/api/v1` | Uso |
+A pontuação estima a prioridade a partir de dificuldade, recorrência e tempo em aberto:
+
+```text
+pontuação = dificuldade × 12 + min(semelhantes × 5, 25) + min(dias em aberto, 15)
+```
+
+São consideradas semelhantes as ocorrências da mesma categoria, não resolvidas, registradas nos últimos 30 dias e a até 200 metros, excluindo a própria ocorrência. As faixas são **Baixa** (<35), **Média** (35–59), **Alta** (60–79) e **Crítica** (≥80). Ocorrências resolvidas permanecem no histórico e nos indicadores, fora da fila de prioridade.
+
+### Endpoints
+
+Base: `/api/v1`. Os contratos, exemplos, parâmetros e respostas HTTP estão disponíveis no Swagger.
+
+| Método | Rota | Operação |
 |---|---|---|
-| POST | `/auth/register`, `/auth/login`, `/auth/refresh`, `/auth/logout` | Sessão |
-| GET | `/auth/me` | Perfil atual |
-| GET | `/categories`, `/territory` | Catálogo e GeoJSON |
-| GET / POST | `/occurrences` | Consultar/criar |
-| GET / PUT / DELETE | `/occurrences/{id}` | Detalhar/editar/excluir |
-| PATCH | `/occurrences/{id}/status` | Andamento do gestor |
-| GET | `/occurrences/{id}/history` | Histórico |
-| GET / PUT / DELETE | `/occurrences/{id}/photo` | Foto |
-| GET | `/indicators` | Agregados |
-| GET | `/health` | API/banco |
+| POST | `/auth/register`, `/auth/login`, `/auth/refresh`, `/auth/logout` | Cadastro e sessão |
+| GET | `/auth/me` | Perfil conectado |
+| GET | `/categories`, `/territory` | Categorias e território |
+| GET / POST | `/occurrences` | Consulta e criação |
+| GET / PUT / DELETE | `/occurrences/{id}` | Detalhe, edição e exclusão |
+| PATCH | `/occurrences/{id}/status` | Atualização de andamento |
+| GET | `/occurrences/{id}/history` | Histórico de status |
+| GET / PUT / DELETE | `/occurrences/{id}/photo` | Fotografia da ocorrência |
+| GET | `/indicators` | Indicadores agregados |
+| GET | `/health` | Disponibilidade da API e do banco |
 
-Filtros: `categoryId`, `status`, `difficulty`, `priority`, `from`, `to`, `mine`; paginação `page` e `pageSize` (máximo 100), ordenação `sort=recent|priority`. Indicadores agregam todo o resultado dos filtros, sem limitar à página. Série temporal usa UTC. As concentrações usam células aproximadas de 200 m.
+As consultas oferecem filtros por categoria, status, dificuldade, prioridade, período e autoria, com ordenação e paginação.
 
-Criação requer header `Idempotency-Key` com UUID. Repetir a mesma chave e conteúdo retorna a mesma ocorrência; reutilizar com conteúdo diferente gera `409`. Bearer JWT no header `Authorization`; Swagger oferece **Authorize**. Erros de validação usam `400`; regras de domínio `422`; sem sessão `401`; sem permissão `403`; ausente `404`; conflito `409`.
+<a id="testes"></a>
 
-O OpenAPI documenta `201` e o header `Location` na criação; `204` sem corpo nas exclusões, logout e envio da foto; `503` quando a verificação de saúde não consegue acessar o banco. A consulta da foto retorna bytes `image/jpeg` ou `image/png`. Há exemplos fictícios para os DTOs, modelos de erro e respostas consolidadas; o exemplo GeoJSON usa o polígono público versionado.
+## Testes
 
-<a id="dados-e-fontes"></a>
+Os testes cobrem regras de domínio, persistência em PostgreSQL, contratos HTTP, autenticação, permissões, idempotência, cadastro, filtros e componentes acessíveis do aplicativo.
 
-## Dados e fontes
-
-Ocorrências, usuários, categorias e fotos de teste são **simulados**, sem dados pessoais reais. O limite geográfico é público: camada `geoportal:distrito_municipal`, feição `distrito_municipal.8583447`, GeoSampa/Prefeitura de São Paulo, obtida em 11/11/2026 via WFS, com atualização informada de 27/10/2026. Fonte original informada: GEOGSG; escala 1:5000. O GeoJSON original e seus metadados estão versionados na infraestrutura.
-
-- [GeoSampa](https://novogeosampa.prefeitura.sp.gov.br/)
-- [Tutorial oficial dos serviços WFS](https://geoinfo-smdu.github.io/tutorial-GeoSampa/)
-- [Serviço WFS](https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs)
-
-
-<a id="testes-e-qualidade"></a>
-
-## Testes e qualidade
-
-Com Docker ativo, a partir da raiz:
+Com Docker ativo, execute na raiz:
 
 ```powershell
 dotnet restore
 npm --prefix mobile ci
 npm run test:all
+```
+
+Para compilar a solução e verificar TypeScript e lint:
+
+```powershell
 npm run check
 ```
 
-
-Consulte [matriz de requisitos](docs/REQUISITOS.md) e [validação e pendências](docs/VALIDACAO.md). Não confundir implementação com requisito fisicamente verificado.
+Os testes de integração utilizam um container PostgreSQL 16 independente do banco da aplicação.
 
 <a id="evidencias-tecnicas"></a>
 
 ## Evidências técnicas
 
-![Documentação automática da API em execução](docs/evidencias/swagger.png)
+### Documentação da API
 
-- [Smoke HTTP e persistência após reinício](docs/evidencias/api-smoke.json).
-- [Relatório dos testes executados](docs/evidencias/test-results.html), gerado dos arquivos TRX e JSON reais.
-- [Resultados Jest](docs/evidencias/mobile-tests.json).
+![Swagger UI da API Passo Seguro](docs/evidencias/swagger.png)
 
-![Relatório dos testes realmente executados](docs/evidencias/tests.png)
+### Testes automatizados
 
+![Relatório de testes executados](docs/evidencias/tests.png)
 
-<a id="video-de-demonstracao"></a>
+- [Relatório de testes](docs/evidencias/test-results.html).
+- [Resultados dos testes mobile](docs/evidencias/mobile-tests.json).
+- [Verificação de CRUD e persistência após reinício](docs/evidencias/api-smoke.json).
+- [Matriz de requisitos](docs/REQUISITOS.md).
+- [Registro de apoio de IA](prompts.md).
 
-## Vídeo de demonstração
+<a id="dados-e-fontes"></a>
 
-**Link do vídeo Mobile:** [Link](https://drive.google.com/file/d/1Isq1JXK9dg9kmraQ2UU9V-GQSo6VwUDs/view?usp=sharing)
+## Dados e fontes
 
+A carga inicial utiliza dados simulados. O limite territorial de Bela Vista é proveniente do **GeoSampa — Prefeitura de São Paulo**, camada `geoportal:distrito_municipal`, com atualização informada de 27/10/2026 e escala 1:5000. O GeoJSON e seus metadados estão versionados no backend.
 
-
+- [GeoSampa](https://novogeosampa.prefeitura.sp.gov.br/).
+- [Serviço WFS](https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs).
