@@ -56,14 +56,14 @@ A tabela reúne as telas e variações da jornada do usuário.
 
 | Descrição | Evidência (print da tela) |
 |---|---|
-| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. |<img src="./docs/evidencias/login.png" width="250" />|
-| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | <img src="./docs/evidencias/cadastro.png" width="250" />|
-| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | <img src="./docs/evidencias/home.png" width="250" /> |
-| **Criar ocorrência** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | <img src="./docs/evidencias/registrar-ocorrencia.png" width="250" /> |
-| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | <img src="./docs/evidencias/explorar.png" width="250" /> |
-| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | <img src="./docs/evidencias/minhas-ocorrencias.png" width="250" /> |
-| **Acompanhamento das ocorrências:** lista dos registros criados pela comunidade. | <img src="./docs/evidencias/numeros.png" width="250" /> |
-| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | <img src="./docs/evidencias/perfil.png" width="250"/> |
+| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. |<img src="./docs/evidencias/login.PNG" width="250" />|
+| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | <img src="./docs/evidencias/cadastro.PNG" width="250" />|
+| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | <img src="./docs/evidencias/home.PNG" width="250" /> |
+| **Criar ocorrência** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | <img src="./docs/evidencias/registrar-ocorrencia.PNG" width="250" /> |
+| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | <img src="./docs/evidencias/explorar.PNG" width="250" /> |
+| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | <img src="./docs/evidencias/minhas-ocorrencias.PNG" width="250" /> |
+| **Acompanhamento das ocorrências:** lista dos registros criados pela comunidade. | <img src="./docs/evidencias/numeros.PNG" width="250" /> |
+| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | <img src="./docs/evidencias/perfil.PNG" width="250"/> |
 
 | **GIF de Demonstração:** Demonstração do Fluxo principal do App. | <img src="./docs/evidencias/video-gs-2026-2.gif" width="250"/> |
 
