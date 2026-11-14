@@ -34,25 +34,16 @@
 | Escopo desta entrega | Mobile, SOA e C#; IA, IoT e entregas das demais disciplinas excluídas por decisão da equipe. |
 
 
-**Integrantes:** 
-| Nome | RM |
-|---|---|
-| Giulia Rocha | 558084 |
-| Gabriel Danius | 555747 |
-| Caio Rossini | 555084 |
-| Carlos Eduardo | 556785 |
-
-
-**GitHub:** inserir URL final. 
-
-
 <a id="integrantes-e-repositorio"></a>
 
 ## Integrantes e repositório
 
 | Nome completo | RM |
 |---|---|
-| A preencher | A preencher |
+| Giulia Rocha | 558084 |
+| Gabriel Danius | 555747 |
+| Caio Rossini | 555084 |
+| Carlos Eduardo | 556785 |
 
 **Repositório GitHub:** inserir a URL do projeto.
 
@@ -60,44 +51,21 @@
 
 ## Evidências das telas do aplicativo
 
-A tabela reúne as telas e variações da jornada do usuário. As imagens devem ser capturas reais do aplicativo no iPhone.
+A tabela reúne as telas e variações da jornada do usuário.
 
-Os prints ainda não foram adicionados ao repositório. Salve-os em `docs/evidencias/mobile/` e substitua as células pendentes pelas imagens correspondentes. Os nomes de arquivo abaixo são sugestões; podem ser ajustados aos arquivos enviados.
 
 | Descrição | Evidência (print da tela) |
 |---|---|
-| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. | _Adicionar print_ — `login.png` |
-| **Login com erro:** mensagem de credenciais inválidas ou falha ao entrar. | _Adicionar print_ — `login-erro.png` |
-| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | _Adicionar print_ — `criar-conta.png` |
-| **Validação do cadastro:** mensagem para dados inválidos, senhas divergentes ou e-mail já cadastrado. | _Adicionar print_ — `criar-conta-validacao.png` |
-| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | _Adicionar print_ — `inicio.png` |
-| **Criar ocorrência — categoria e descrição:** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | _Adicionar print_ — `criar-ocorrencia.png` |
-| **Criar ocorrência — endereço:** preenchimento e busca do endereço para posicionar o marcador. | _Adicionar print_ — `ocorrencia-endereco.png` |
-| **Criar ocorrência — localização atual:** uso do GPS para selecionar o ponto da ocorrência. | _Adicionar print_ — `ocorrencia-localizacao-atual.png` |
-| **Criar ocorrência — seleção no mapa:** marcador do obstáculo e campos de latitude e longitude. | _Adicionar print_ — `ocorrencia-mapa.png` |
-| **Criar ocorrência — fotografia:** imagem selecionada pela câmera ou galeria e opção de retirar a foto. | _Adicionar print_ — `ocorrencia-foto.png` |
-| **Validação da ocorrência:** mensagem de campo inválido, ponto fora de Bela Vista ou permissão de localização negada. | _Adicionar print_ — `ocorrencia-validacao.png` |
-| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | _Adicionar print_ — `explorar-lista.png` |
-| **Explorar — filtros:** opções horizontais de categoria, andamento, prioridade e dificuldade. | _Adicionar print_ — `explorar-filtros.png` |
-| **Explorar — mapa:** distribuição das ocorrências da página consultada em marcadores. | _Adicionar print_ — `explorar-mapa.png` |
-| **Consulta sem resultados:** estado de lista vazia para os filtros selecionados. | _Adicionar print_ — `consulta-vazia.png` |
-| **Consulta com falha de conexão:** mensagem de erro e ação para tentar novamente. | _Adicionar print_ — `consulta-erro.png` |
-| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | _Adicionar print_ — `minhas-ocorrencias.png` |
-| **Detalhe — aberta:** ocorrência em aberto, identificada em roxo, com informações e prioridade calculada. | _Adicionar print_ — `detalhe-aberta.png` |
-| **Detalhe — em análise:** ocorrência em análise, identificada em amarelo. | _Adicionar print_ — `detalhe-em-analise.png` |
-| **Detalhe — resolvida:** ocorrência resolvida, identificada em verde. | _Adicionar print_ — `detalhe-resolvida.png` |
-| **Detalhe — histórico:** linha do tempo com as alterações de andamento e suas datas. | _Adicionar print_ — `detalhe-historico.png` |
-| **Editar ocorrência:** formulário preenchido para atualização de uma ocorrência aberta do próprio usuário. | _Adicionar print_ — `editar-ocorrencia.png` |
-| **Excluir ocorrência:** confirmação antes de remover o registro. | _Adicionar print_ — `excluir-ocorrencia.png` |
-| **Gestão do andamento:** ações do gestor para iniciar análise, marcar resolução ou retornar a ocorrência para aberta. | _Adicionar print_ — `gestao-andamento.png` |
-| **Indicadores — resumo e filtros:** total de registros e seleção horizontal do período de análise. | _Adicionar print_ — `indicadores-resumo.png` |
-| **Indicadores — distribuição:** categorias, andamentos e prioridades das ocorrências. | _Adicionar print_ — `indicadores-distribuicao.png` |
-| **Indicadores — evolução e concentração:** registros por dia e concentrações regionais. | _Adicionar print_ — `indicadores-evolucao.png` |
-| **Rascunhos:** registros salvos no aparelho, com opções para continuar ou excluir. | _Adicionar print_ — `rascunhos.png` |
-| **Rascunhos vazios:** mensagem exibida quando não há registros locais salvos. | _Adicionar print_ — `rascunhos-vazios.png` |
-| **Consulta offline:** dados recuperados do cache, com indicação da última atualização. | _Adicionar print_ — `consulta-offline.png` |
-| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | _Adicionar print_ — `perfil.png` |
-| **Sair da conta:** confirmação de saída e aviso sobre a limpeza de cache e rascunhos locais. | _Adicionar print_ — `sair-da-conta.png` |
+| **Login:** entrada na conta com e-mail e senha e acesso à criação de conta. |<img src="./docs/evidencias/login.png" width="250" />|
+| **Criar conta:** formulário com nome, e-mail, senha e confirmação de senha. | <img src="./docs/evidencias/cadastro.png" width="250" />|
+| **Início:** visão geral, saudação, total de ocorrências e atalhos da jornada. | <img src="./docs/evidencias/home.png" width="250" /> |
+| **Criar ocorrência** seleção da categoria, descrição do obstáculo e dificuldade de circulação. | <img src="./docs/evidencias/registrar-ocorrencia.png" width="250" /> |
+| **Explorar — lista:** consulta dos obstáculos registrados, com prioridade, andamento e acesso aos detalhes. | <img src="./docs/evidencias/explorar.png" width="250" /> |
+| **Minhas ocorrências:** lista dos registros criados pela conta conectada. | <img src="./docs/evidencias/minhas-ocorrencias.png" width="250" /> |
+| **Acompanhamento das ocorrências:** lista dos registros criados pela comunidade. | <img src="./docs/evidencias/numeros.png" width="250" /> |
+| **Perfil:** identificação da conta, papel de acesso, informações do app e acesso aos rascunhos. | <img src="./docs/evidencias/perfil.png" width="250"/> |
+
+| **GIF de Demonstração:** Demonstração do Fluxo principal do App. | <img src="./docs/evidencias/video-gs-2026-2.gif" width="250"/> |
 
 Para exibir um print na segunda coluna, substitua a célula por uma imagem com largura ajustada, por exemplo:
 
