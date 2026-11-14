@@ -1,5 +1,11 @@
 # Registro de apoio de IA
 
+## 2026-11-13 — Consolidação da matriz e das validações
+
+Solicitação: atualizar os documentos de acompanhamento após a equipe confirmar conclusão do vídeo, da revisão de acessibilidade e da entrega aos professores.
+
+Atualizados REQUISITOS.md e VALIDACAO.md para refletir as evidências presentes, as últimas contagens registradas e as confirmações da equipe. O histórico de execuções foi preservado, sem afirmar novas verificações físicas ou validação independente de submissões. Identificada diferença entre a publicação no YouTube confirmada pela equipe e o endereço Google Drive ainda presente no README; a URL necessária não foi inventada.
+
 ## 2026-11-13 — Revisão profissional do README
 
 Solicitação: apresentar as tecnologias no início e remover textos de orientação interna ou sem relevância para a avaliação.
